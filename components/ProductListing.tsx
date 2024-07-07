@@ -14,11 +14,11 @@ export default function ProductListing({}: Props) {
         <FilterBtn />
         <SortBtn />
       </div>
-      <div className="mt-[90px] grid grid-cols-2 gap-4 px-4">
+      <div className="mt-[90px] grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-14 lg:gap-[100px] px-4 md:px-8 lg:px-10">
         {Products?.map((item, index) => (
           <div
             key={index}
-            className="relative text-center px-10 py-4 border #6E6E6E"
+            className="relative flex flex-col justify-center items-center text-center px-10 py-4 border #6E6E6E"
           >
             <Image
               src={item?.image}
@@ -28,7 +28,9 @@ export default function ProductListing({}: Props) {
               className="w-[74px] h-fit"
             />
             <h2 id="product_name">{item?.name}</h2>
-            <p id="price" className="font-exo-2">{item?.price}</p>
+            <p id="price" className="font-exo-2">
+              {item?.price}
+            </p>
             {/* cart icon */}
             <div className="bg-[#212121] absolute top-3 right-3 rounded-[60px] p-[4.8px] w-6 h-6 flex justify-center items-center">
               <svg

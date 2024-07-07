@@ -7,10 +7,10 @@ import Footer from "@/components/Footer";
 const playfairDisplay = Playfair_Display({ subsets: ["latin"] });
 
 const exo_2 = Exo_2({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-exo-2'
-})
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-exo-2",
+});
 
 export const metadata: Metadata = {
   title: "Smash Zone",
@@ -24,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${playfairDisplay.className} ${exo_2.variable}`}>
+      <body
+        className={`${playfairDisplay.className} ${exo_2.variable} overflow-x-hidden`}
+      >
         <Navbar />
         {children}
         <Footer />

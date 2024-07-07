@@ -23,7 +23,7 @@ export default function Pagination({
   };
 
   return (
-    <div className="flex gap-5 font-exo-2 justify-between items-center my-8 mx-6">
+    <div className="flex gap-5 font-exo-2 justify-between items-center my-8 px-4 md:px-8 lg:px-10 max-w-[620px] mx-auto">
       {/* Previous btn */}
       <button
         disabled={currentPage === 1}

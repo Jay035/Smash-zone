@@ -51,8 +51,10 @@ export const Navbar = () => {
     <header
       className={`
         bg-[#3B3B3B]
-       fixed top-0 left-0 z-50 flex justify-between items-center w-full py-6 px-4 `}
+       fixed top-0 left-0 z-50 flex justify-between items-center w-full py-6 px-4 md:px-8 lg:px-10`}
     >
+      <div className="">
+
       <Link href="/">
         <Image
           className="w-[189px]"
@@ -115,6 +117,7 @@ export const Navbar = () => {
           </li>
         </ul>
       </div>
+      </div>
 
       {/* VISIBLE ON DESKTOP  */}
       <div className="">
@@ -132,7 +135,7 @@ export const Navbar = () => {
         onClick={toggleMenu}
         className={`z-[999999999999] grid justify-self-end justify-between flex-col xl:hidden gap-1.5 cursor-pointer ${
           menuShown
-            ? "bg-white fixed right-4 px-1.5 pt-5 py-4 rounded-full"
+            ? "bg-white fixed w-10 h-10 flex justify-center items-center right-4 px-1.5 pt-5 py-4 rounded-full"
             : "bg-transparent"
         }`}
       >
