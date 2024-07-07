@@ -28,7 +28,7 @@ export default function ProductListing({}: Props) {
               className="w-[74px] h-fit"
             />
             <h2 id="product_name">{item?.name}</h2>
-            <p id="price" className="font-exo-2">
+            <p id="price" className="font-exo-2 mt-4">
               {item?.price}
             </p>
             {/* cart icon */}
