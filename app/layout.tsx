@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Playfair_Display, Exo_2 } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
 const playfairDisplay = Playfair_Display({ subsets: ["latin"] });
+
+const exo_2 = Exo_2({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-exo-2'
+})
 
 export const metadata: Metadata = {
   title: "Smash Zone",
-  description: "Premium Rackets Collection",
+  description: "Premium Sports Collection",
 };
 
 export default function RootLayout({
@@ -18,9 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={playfairDisplay.className}>
+      <body className={`${playfairDisplay.className} ${exo_2.variable}`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

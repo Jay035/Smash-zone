@@ -68,22 +68,13 @@ export const Navbar = () => {
           menuShown
             ? ` top-0 left-0 w-full h-screen bg-[#6B7280]/40 xl:bg-transparent backdrop-blur-sm xl:backdrop-blur-0 xl:h-fit xl:w-fit transition-all `
             : `-left-full xl:left-0 w-fit`
-        } fixed items-center z-30 sm:text-lg text-[#6B7280] xl:relative overflow-x-hidden`}
+        } fixed items-center z-30 sm:text-lg text-white xl:relative overflow-x-hidden`}
       >
         <ul
           className={` ${
             menuShown && "w-[80%]"
-          } whitespace-nowrap bg-white xl:bg-transparent h-screen xl:h-fit xl:w-fit flex flex-col xl:flex-row xl:justify-between gap-8 px-8 sm:px-[6vw] pt-40 xl:pt-0`}
+          } whitespace-nowrap bg-[#3B3B3B] xl:bg-transparent h-screen xl:h-fit xl:w-fit flex flex-col xl:flex-row xl:justify-between gap-8 px-8 sm:px-[6vw] pt-40 xl:pt-0`}
         >
-          {/* <Link
-            href="/blog"
-            className="after:bg-[#14532D] after:h-0.5 after:block after:w-0 after:hover:w-full ease-in after:transition-all w-fit"
-            onClick={() => {
-              setMenuShown((prevState: boolean) => !prevState);
-            }}
-          >
-            Health Center
-          </Link> */}
           <li
             onClick={() => {
               setMenuShown((prevState: boolean) => !prevState);

@@ -29,4 +29,10 @@ export const Products = [
     price: "N180,000.00",
     image: "/SpinMaster 250.svg",
   },
+  {
+    id: 6,
+    name: "FeatherLite 100",
+    price: "N150,000.00",
+    image: "/FeatherLite 100.svg",
+  },
 ];

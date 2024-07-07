@@ -1,18 +1,20 @@
 import Image from "next/image";
 import FilterBtn from "./FilterBtn";
 import SortBtn from "./SortBtn";
-import { Products } from "./data";
+import { Products } from "@/components/data";
 
 type Props = {};
 
 export default function ProductListing({}: Props) {
   return (
     <section className="">
-      <div className="flex justify-between px-4 items-center border-b border-[#A1A1A1]">
+      <div
+        className={`font-exo-2 flex justify-between px-4 items-center border-b border-[#A1A1A1]`}
+      >
         <FilterBtn />
         <SortBtn />
       </div>
-      <div className="my-[90px] grid grid-cols-2 gap-4 px-4">
+      <div className="mt-[90px] grid grid-cols-2 gap-4 px-4">
         {Products?.map((item, index) => (
           <div
             key={index}
@@ -26,7 +28,7 @@ export default function ProductListing({}: Props) {
               className="w-[74px] h-fit"
             />
             <h2 id="product_name">{item?.name}</h2>
-            <p id="price">{item?.price}</p>
+            <p id="price" className="font-exo-2">{item?.price}</p>
             {/* cart icon */}
             <div className="bg-[#212121] absolute top-3 right-3 rounded-[60px] p-[4.8px] w-6 h-6 flex justify-center items-center">
               <svg

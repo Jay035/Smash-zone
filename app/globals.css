@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-exo-2{
+    font-family: var(--font-exo-2) ;
+}
