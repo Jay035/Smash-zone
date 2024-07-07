@@ -132,7 +132,7 @@ export const Navbar = () => {
           alt="user icon"
           width="0"
           height="0"
-          className=""
+          className="w-4 h-4"
         />
       </div>
 
@@ -152,7 +152,9 @@ export const Navbar = () => {
         ></span>
         <span
           className={`w-6 h-[3px] transition-all duration-150 ease-out delay-75 ${
-            menuShown ? `rotate-[495deg] bg-black -translate-y-2  w-6 ` : `bg-white`
+            menuShown
+              ? `rotate-[495deg] bg-black -translate-y-2  w-6 `
+              : `bg-white`
           }`}
         ></span>
         <span
