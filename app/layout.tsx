@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.className} ${exo_2.variable} overflow-x-hidden`}
+        className={`${playfairDisplay.className} ${exo_2.variable} scroll-smooth overflow-x-hidden`}
       >
         <ShopContextProvider>
           <Navbar />

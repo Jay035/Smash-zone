@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Products } from "@/components/data";
 import { ReactNode, createContext, useContext, useState } from "react";
@@ -9,6 +9,8 @@ export const ShopContext = createContext<ShopProps>({
 
 type ShopProps = {
   cartItems: any;
+  addToCart?: (x: number) => void;
+  removeFromCart?: (x: number) => void;
 };
 
 type Props = {
@@ -26,24 +28,42 @@ const getDefaultCart = () => {
 };
 
 export const ShopContextProvider = ({ children }: Props) => {
-  const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [cartItems, setCartItems] = useState([]);
+  const [totalItemsInCart, setTotalItemsInCart] = useState()
 
-  const addToCart = (itemId: number) => {
-    setCartItems((prev: any) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    console.log(cartItems)
+  const getTotalItemsInCart = (items: CartProps[]) =>
+    items?.reduce((acc, item) => acc + item.quantity, 0);
+
+  const addToCart = (product: any) => {
+    console.log(product);
+    setCartItems((prev: any) => {
+      const ProductInCart = cartItems?.find(
+        (item: CartProps) => item?.id === product.id
+      );
+      // is the product already in the cart
+      if (ProductInCart) {
+        return prev?.map((item: CartProps) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prev, { ...product, quantity: 1 }];
+      }
+    });
+    console.log(cartItems);
   };
 
   const removeFromCart = (itemId: number) => {
     setCartItems((prev: any) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-    console.log(cartItems)
+    console.log(cartItems, itemId);
   };
-
-
 
   const value = {
     cartItems,
     addToCart,
-    removeFromCart
+    removeFromCart,
+    getTotalItemsInCart
   };
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;

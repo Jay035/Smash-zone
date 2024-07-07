@@ -62,6 +62,7 @@ export const Navbar = () => {
           width="0"
           height="0"
           alt="logo"
+          priority
         />
       </Link>
       {/* menu */}

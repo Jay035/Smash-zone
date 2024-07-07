@@ -22,8 +22,32 @@ export default function Pagination({
     }
   };
 
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+
+          // work on this func 
+          onClick={() => {handlePageClick(i)
+            console.log(i, currentPage)
+          }}
+          className={` flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 hover:bg-[#EDEDED]/70 ${
+            i === currentPage ? "bg-black text-white" : "bg-[#EDEDED] text-[#3b3b3b]"
+          }`}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    return pageNumbers;
+  };
+
   return (
-    <div className="flex gap-5 font-exo-2 justify-between items-center my-8 px-4 md:px-8 lg:px-10 max-w-[620px] mx-auto">
+    <div className="flex gap-5 font-exo-2 justify-between items-center mt-[100px] my-8 px-4 md:px-8 lg:px-10 max-w-[620px] mx-auto">
       {/* Previous btn */}
       <button
         disabled={currentPage === 1}
@@ -39,7 +63,7 @@ export default function Pagination({
         />
       </button>
       <div className="flex gap-4 text-lg items-center">
-        {Array.from({ length: totalPages }, (_, index) => (
+        {/* {Array.from({ length: totalPages }, (_, index) => (
           <button
           className=" bg-[#EDEDED] flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 hover:bg-[#EDEDED]/70 "
         
@@ -49,7 +73,8 @@ export default function Pagination({
           >
             {index + 1}
           </button>
-        ))}
+        ))} */}
+        {renderPageNumbers()}
       </div>
       <button
         disabled={currentPage === totalPages}
