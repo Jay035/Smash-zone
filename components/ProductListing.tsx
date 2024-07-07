@@ -25,10 +25,10 @@ export default function ProductListing({}: Props) {
               alt="product image"
               width="0"
               height="0"
-              className="w-[74px] h-fit"
+              className="w-[74px] md:w-[136px] h-fit"
             />
-            <h2 id="product_name">{item?.name}</h2>
-            <p id="price" className="font-exo-2 mt-4">
+            <h2 className="mt-8 mb-4" id="product_name">{item?.name}</h2>
+            <p id="price" className="font-exo-2">
               {item?.price}
             </p>
             {/* cart icon */}

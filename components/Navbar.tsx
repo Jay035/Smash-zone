@@ -51,7 +51,7 @@ export const Navbar = () => {
     <header
       className={`
         bg-[#3B3B3B]
-       fixed top-0 left-0 z-50 flex justify-between items-center w-full py-6 px-4 md:px-8 lg:px-10`}
+       fixed top-0 left-0 z-50 font-exo-2 flex justify-between items-center w-full py-6 px-4 md:px-8 lg:px-10`}
     >
       <div className="xl:flex justify-between items-center">
 
