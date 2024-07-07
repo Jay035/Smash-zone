@@ -3,6 +3,7 @@ import { Playfair_Display, Exo_2 } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ShopContextProvider } from "@/context/ContextProvider";
 
 const playfairDisplay = Playfair_Display({ subsets: ["latin"] });
 
@@ -27,9 +28,11 @@ export default function RootLayout({
       <body
         className={`${playfairDisplay.className} ${exo_2.variable} overflow-x-hidden`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <ShopContextProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </ShopContextProvider>
       </body>
     </html>
   );

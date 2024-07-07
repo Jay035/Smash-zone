@@ -13,6 +13,13 @@ export default function FilterBtn() {
           className="w-4 h-4"
         />
         SHOW FILTERS
+        <Image
+          src="/chevron-down.svg"
+          alt="arrow down"
+          width="0"
+          height="0"
+          className="w-4 h-4"
+        />
       </button>
     </div>
   );

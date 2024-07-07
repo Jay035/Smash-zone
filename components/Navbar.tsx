@@ -53,7 +53,7 @@ export const Navbar = () => {
         bg-[#3B3B3B]
        fixed top-0 left-0 z-50 flex justify-between items-center w-full py-6 px-4 md:px-8 lg:px-10`}
     >
-      <div className="">
+      <div className="xl:flex justify-between items-center">
 
       <Link href="/">
         <Image
@@ -120,13 +120,27 @@ export const Navbar = () => {
       </div>
 
       {/* VISIBLE ON DESKTOP  */}
-      <div className="">
+      <div className="hidden xl:flex w-fit gap-[42px] items-center">
         <Image
-          src="/user-linear.svg"
+          src="/user.svg"
           alt="user icon"
           width="0"
           height="0"
-          className="w-4 h-4"
+          className="w-6 h-6"
+        />
+        <Image
+          src="/search.svg"
+          alt="search icon"
+          width="0"
+          height="0"
+          className="w-6 h-6"
+        />
+        <Image
+          src="/shopping-bag-03.svg"
+          alt="cart icon"
+          width="0"
+          height="0"
+          className="w-6 h-6"
         />
       </div>
 
