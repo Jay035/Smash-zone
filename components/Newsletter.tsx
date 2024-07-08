@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { Toast } from "./Toast";
 
@@ -37,9 +37,9 @@ export default function Newsletter({}: Props) {
     }
   };
   return (
-    <section className="flex flex-col gap-6 text-[#3B3B3B]">
-        {/* MODAL  */}
-        <Toast showModal={showModal} setShowModal={setShowModal}>
+    <section className="relative flex flex-col gap-6 text-[#3B3B3B]">
+      {/* TOAST  */}
+      <Toast showModal={showModal} setShowModal={setShowModal}>
         <div className="flex items-center gap-2">
           <i
             className={`${
@@ -67,8 +67,15 @@ export default function Newsletter({}: Props) {
         name="email"
         id="email"
         placeholder="Email"
+        value={email}
+        onChange={handleEmailChange}
+        required
       />
-      <button className="bg-[#212121] font-exo-2 text-[#FBC02D] hover:border-black hover:bg-transparent hover:border hover:text-black rounded-[38px] w-[241px] px-6 py-4">
+      <button
+        disabled={email === ""}
+        onClick={handleSubscribe}
+        className="bg-[#212121] disabled:bg-[#212121]/80 font-exo-2 text-[#FBC02D] hover:border-black hover:bg-transparent hover:border hover:text-white rounded-[38px] w-[241px] px-6 py-4"
+      >
         GET UPDATES
       </button>
     </section>
