@@ -1,5 +1,6 @@
 "use client";
 
+import CheckoutBtn from "@/components/CheckoutBtn";
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
 
@@ -7,48 +8,78 @@ type Props = {};
 
 export default function CartItems({}: Props) {
   const { cartItems } = useShopContext();
-  console.log(cartItems)
+  console.log(cartItems);
   return (
     <section>
-      {cartItems?.length > 0 && cartItems?.map((item: CartProps) => (
-        <div className="border-b border-[#6E6E6E]" key={item.id}>
-          <div className="flex items-center gap-4 justify-between">
-            <Image
-              src={item.image}
-              alt="product image"
-              width="0"
-              height="0"
-              className="w-[66px] h-[179px]"
-            />
-            <div className="">
-              <h2>{item.name}</h2>
-              <p>{item.price}</p>
+      {cartItems?.length > 0 ? (
+        <div className="">
+          {/* cart item headers */}
+          <div className="hidden md:flex justify-between border-b py-5 border-[#6E6E6E] items-center">
+            <h1>PRODUCT</h1>
+            <h1>QTY.</h1>
+            <h1>TOTAL</h1>
+          </div>
+          {cartItems?.map((item: CartProps) => (
+            <div
+              className="border-b text-[#3B3B3B] border-[#6E6E6E] py-8"
+              key={item.id}
+            >
+              <div className="flex items-center gap-4 justify-between">
+                <Image
+                  src={item.image}
+                  alt="product image"
+                  width="0"
+                  height="0"
+                  className="w-[66px] h-[179px]"
+                />
+                <div className="min-w-[137px]">
+                  <h2 className="text-xl font-medium text-[#6E6E6E]">
+                    {item.name}
+                  </h2>
+                  <p className="font-exo-2 text-lg text-[#6E6E6E]">
+                    {item.price}
+                  </p>
+                </div>
+              </div>
+              {/* qty */}
+              <div className="w-fit ml-auto text-center">
+                <div className="border mb-[14px] border-[#A1A1A1] py-3 px-[14px] flex gap-2 items-center">
+                  <button className="w-[42px] flex justify-center">
+                    <Image
+                      src="/minus.svg"
+                      alt="minus icon"
+                      width="0"
+                      height="0"
+                      className="w-6 h-6"
+                    />
+                  </button>
+                  <span className="font-exo-2">{item.quantity}</span>
+                  <button className="w-[42px] flex justify-center">
+                    <Image
+                      src="/plus.svg"
+                      alt="plus icon"
+                      width="0"
+                      height="0"
+                      className="w-6 h-6"
+                    />
+                  </button>
+                </div>
+                <span className="font-exo-2">Remove</span>
+              </div>
             </div>
+          ))}
+          <div className="md:w-[312px] ml-auto">
+            <div className="mb-10 mt-[34px] text-xl flex items-center justify-between">
+              <p className="font-semibold">SUBTOTAL</p>
+              <p className="font-exo-2">N0.00</p>
+            </div>
+            <CheckoutBtn />
           </div>
-          {/* qty */}
-          <div className="border border-[#A1A1A1] py-3 px-[14px] flex gap-2 items-center">
-            <button>
-              <Image
-                src="/minus.svg"
-                alt="minus icon"
-                width="0"
-                height="0"
-                className="w-6 h-6"
-              />
-            </button>
-            {item.quantity}
-            <button>
-              <Image
-                src="/plus.svg"
-                alt="plus icon"
-                width="0"
-                height="0"
-                className="w-6 h-6"
-              />
-            </button>
-          </div>
+          ;
         </div>
-      ))}
+      ) : (
+        <p className="text-center font-exo-2 text-lg lg:text-xl">No items yet...Continue shopping to explore more</p>
+      )}
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 type Props = {
   item: any;
@@ -8,6 +8,21 @@ type Props = {
 
 export default function Product({ item }: Props) {
   const { addToCart } = useShopContext();
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [subscriptionSuccessful, setSubscriptionSuccessful] =
+    useState<boolean>(false);
+
+  const handleEmailChange = (event: any) => {
+    event.preventDefault();
+    setEmail(event.target.value);
+  };
+
+  const handleClick = async (e: any) => {
+    e.preventDefault();
+    console.log("Added to cart")
+  };
   return (
     <div
       key={item?.id}
