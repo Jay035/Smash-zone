@@ -15,6 +15,7 @@ type ShopProps = {
   setCurrentPage?: (page: number) => void;
   sliceValue?: number;
   setSliceValue?: (page: number) => void;
+  getTotalItemsInCart?: any;
 };
 
 type Props = {
@@ -63,10 +64,20 @@ export const ShopContextProvider = ({ children }: Props) => {
     console.log(cartItems);
   };
 
-  const removeFromCart = (item: CartProps) => {
-    setCartItems((prev: any) => ({ ...prev, [item.id]: prev[item.id] - 1 }));
-    console.log(cartItems, item.id);
+  const removeFromCart = ({ id }: CartProps) => {
+    setCartItems((prev: any) =>
+      prev.reduce((ack: any, item: CartProps) => {
+        if (item.id === id) {
+          if (item.quantity === 1) return ack;
+          return [...ack, { ...item, quantity: item.quantity - 1 }];
+        } else {
+          return [...ack, item];
+        }
+      }, [] as CartProps[])
+    );
   };
+
+  
 
   const value = {
     cartItems,

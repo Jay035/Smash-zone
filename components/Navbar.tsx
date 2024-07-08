@@ -1,20 +1,17 @@
 "use client";
 
 // HOOKS
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useShopContext } from "@/context/ContextProvider";
 
 // COMPONENTS
+import { useShopContext } from "@/context/ContextProvider";
 
 export const Navbar = () => {
-  const { cartItems } = useShopContext();
-  const optionsRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
+  const { cartItems, getTotalItemsInCart } = useShopContext();
+  const totalItemsInCart = getTotalItemsInCart(cartItems);
   const [menuShown, setMenuShown] = useState<boolean>(false);
-  const [profileMenuShown, setProfileMenuShown] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -30,29 +27,19 @@ export const Navbar = () => {
     setMenuShown((prevValue) => !prevValue);
   };
 
-  const handleOutsideClick = (event: MouseEvent) => {
-    if (
-      optionsRef.current &&
-      !optionsRef.current.contains(event.target as Node)
-    ) {
-      setProfileMenuShown(false);
-      console.log(profileMenuShown);
-    }
-  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
 
-  //   useEffect(() => {
-  //     window.addEventListener("scroll", handleScroll);
-
-  //     // Cleanup function to remove event listener
-  //     return () => {
-  //       window.removeEventListener("DOMContentLoaded", handleScroll);
-  //     };
-  //   });
+    // Cleanup function to remove event listener
+    return () => {
+      window.removeEventListener("DOMContentLoaded", handleScroll);
+    };
+  });
 
   return (
     <header
-      className={`
-        bg-[#3B3B3B]
+      className={` ${scrolled ? "bg-[#3B3B3B]/90" : "bg-[#3B3B3B]"}
+        
        fixed top-0 left-0 z-50 font-exo-2 flex justify-between items-center w-full py-6 px-4 md:px-8 lg:px-10`}
     >
       <div className="xl:flex justify-between items-center">
@@ -149,7 +136,7 @@ export const Navbar = () => {
                 />
                 {cartItems.length > 0 && (
                   <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
-                    {cartItems?.length}
+                    {totalItemsInCart}
                   </div>
                 )}
               </Link>
@@ -190,13 +177,13 @@ export const Navbar = () => {
           />
           {cartItems.length > 0 && (
             <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
-              {cartItems?.length}
+              {totalItemsInCart}
             </div>
           )}
         </Link>
       </div>
 
-      {/* hamburger */}
+      {/* hamburger / menu icon */}
       <div
         onClick={toggleMenu}
         className={`z-[999999999999] grid justify-self-end justify-between flex-col xl:hidden gap-1.5 cursor-pointer ${

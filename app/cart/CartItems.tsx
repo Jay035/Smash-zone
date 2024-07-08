@@ -4,12 +4,11 @@ import CheckoutBtn from "@/components/CheckoutBtn";
 import ProductListing from "@/components/ProductListing";
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 type Props = {};
 
 export default function CartItems({}: Props) {
-  const { cartItems } = useShopContext();
+  const { cartItems,addToCart, removeFromCart } = useShopContext();
 
 
   return (
@@ -47,7 +46,7 @@ export default function CartItems({}: Props) {
               {/* qty */}
               <div className="w-fit ml-auto md:ml-0 text-center">
                 <div className="border mb-[14px] border-[#A1A1A1] py-3 px-[14px] flex gap-2 items-center">
-                  <button className="w-[42px] flex justify-center">
+                  <button onClick={() => removeFromCart?.(item)} className="w-[42px] flex justify-center">
                     <Image
                       src="/minus.svg"
                       alt="minus icon"
@@ -57,7 +56,7 @@ export default function CartItems({}: Props) {
                     />
                   </button>
                   <span className="font-exo-2">{item.quantity}</span>
-                  <button className="w-[42px] flex justify-center">
+                  <button onClick={() => addToCart?.(item)} className="w-[42px] flex justify-center">
                     <Image
                       src="/plus.svg"
                       alt="plus icon"
@@ -67,7 +66,7 @@ export default function CartItems({}: Props) {
                     />
                   </button>
                 </div>
-                <span className="font-exo-2">Remove</span>
+                <span className="font-exo-2 cursor-pointer" onClick={() => removeFromCart?.(item)}>Remove</span>
               </div>
               <p className="hidden md:inline-block text-lg font-exo-2 font-bold text-[#3B3B3B]">
                 N200,000.00
