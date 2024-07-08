@@ -22,12 +22,6 @@ export default function ProductListing() {
   );
   return (
     <section className="">
-      <div
-        className={`font-exo-2 flex justify-between px-4 md:px-8 lg:px-10 items-center border-b border-[#A1A1A1]`}
-      >
-        <FilterBtn />
-        <SortBtn />
-      </div>
       <div className="mt-[90px] grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-14 lg:gap-[100px] px-4 md:px-8 lg:px-10">
         {paginatedItems?.map((item: ProductProps) => (
           <Product key={item.id} item={item} />

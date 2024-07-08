@@ -131,9 +131,13 @@ export const Navbar = () => {
                 height="0"
                 className="w-6 h-fit"
               />
-              <Link href="/cart" onClick={() => {
-                setMenuShown((prevState: boolean) => !prevState);
-              }}>
+              <Link
+                href="/cart"
+                onClick={() => {
+                  setMenuShown((prevState: boolean) => !prevState);
+                }}
+                className="relative"
+              >
                 <Image
                   src="/shopping-bag-03.svg"
                   alt="cart icon"
@@ -141,6 +145,9 @@ export const Navbar = () => {
                   height="0"
                   className="w-6 h-fit"
                 />
+                <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
+                  1
+                </div>
               </Link>
             </div>
           </ul>
@@ -163,13 +170,24 @@ export const Navbar = () => {
           height="0"
           className="w-6 h-6"
         />
-        <Image
-          src="/shopping-bag-03.svg"
-          alt="cart icon"
-          width="0"
-          height="0"
-          className="w-6 h-6"
-        />
+        <Link
+          href="/cart"
+          onClick={() => {
+            setMenuShown((prevState: boolean) => !prevState);
+          }}
+          className="relative"
+        >
+          <Image
+            src="/shopping-bag-03.svg"
+            alt="cart icon"
+            width="0"
+            height="0"
+            className="w-6 h-fit"
+          />
+          <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
+            1
+          </div>
+        </Link>
       </div>
 
       {/* hamburger */}

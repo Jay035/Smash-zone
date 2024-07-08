@@ -1,6 +1,7 @@
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
 import React, { useState } from "react";
+import { Toast } from "./Toast";
 
 type Props = {
   item: any;
@@ -8,26 +9,43 @@ type Props = {
 
 export default function Product({ item }: Props) {
   const { addToCart } = useShopContext();
-  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [subscriptionSuccessful, setSubscriptionSuccessful] =
+  const [addToCartSuccessful, setAddToCartSuccessful] =
     useState<boolean>(false);
-
-  const handleEmailChange = (event: any) => {
-    event.preventDefault();
-    setEmail(event.target.value);
-  };
 
   const handleClick = async (e: any) => {
     e.preventDefault();
-    console.log("Added to cart")
+    console.log("Added to cart");
+    addToCart?.(item);
+    setAddToCartSuccessful(true)
+    setShowModal(true);
+    setTimeout(() => {
+      setShowModal?.(false);
+    }, 4000);
   };
   return (
     <div
       key={item?.id}
       className="relative flex flex-col justify-center items-center text-center px-10 py-4 border #6E6E6E"
     >
+      {/* MODAL  */}
+      <Toast showModal={showModal} setShowModal={setShowModal}>
+        <div className="flex items-center gap-2">
+          <i
+            className={`${
+              addToCartSuccessful 
+                ? "ri-checkbox-circle-line text-green-500"
+                : "ri-error-warning-fill text-red-500"
+            } text-xl`}
+          ></i>
+          {addToCartSuccessful ? (
+            <span>Item added to cart</span>
+          ) : (
+            <span>Couldn&apos;t add to cart</span>
+          )}
+        </div>
+      </Toast>
       <Image
         src={item?.image}
         alt="product image"
@@ -39,11 +57,11 @@ export default function Product({ item }: Props) {
         {item?.name}
       </h2>
       <p id="price" className="font-exo-2">
-        {item?.price}
+        N{item?.price}
       </p>
       {/* cart icon */}
       <div
-        onClick={() => addToCart?.(item)}
+        onClick={handleClick}
         className="bg-[#212121] cursor-pointer absolute top-3 right-3 rounded-[60px] p-[4.8px] w-6 h-6 flex justify-center items-center"
       >
         <Image

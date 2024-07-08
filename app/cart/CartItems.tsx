@@ -1,6 +1,7 @@
 "use client";
 
 import CheckoutBtn from "@/components/CheckoutBtn";
+import ProductListing from "@/components/ProductListing";
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
 
@@ -8,7 +9,7 @@ type Props = {};
 
 export default function CartItems({}: Props) {
   const { cartItems } = useShopContext();
-  console.log(cartItems);
+
   return (
     <section>
       {cartItems?.length > 0 ? (
@@ -21,7 +22,7 @@ export default function CartItems({}: Props) {
           </div>
           {cartItems?.map((item: CartProps) => (
             <div
-              className="border-b text-[#3B3B3B] border-[#6E6E6E] py-8"
+              className="border-b text-[#3B3B3B] md:flex md:justify-between items-center border-[#6E6E6E] py-8"
               key={item.id}
             >
               <div className="flex items-center gap-4 justify-between">
@@ -42,7 +43,7 @@ export default function CartItems({}: Props) {
                 </div>
               </div>
               {/* qty */}
-              <div className="w-fit ml-auto text-center">
+              <div className="w-fit ml-auto md:ml-0 text-center">
                 <div className="border mb-[14px] border-[#A1A1A1] py-3 px-[14px] flex gap-2 items-center">
                   <button className="w-[42px] flex justify-center">
                     <Image
@@ -66,6 +67,9 @@ export default function CartItems({}: Props) {
                 </div>
                 <span className="font-exo-2">Remove</span>
               </div>
+              <p className="hidden md:inline-block text-lg font-exo-2 font-bold text-[#3B3B3B]">
+                N200,000.00
+              </p>
             </div>
           ))}
           <div className="md:w-[312px] ml-auto">
@@ -78,8 +82,16 @@ export default function CartItems({}: Props) {
           ;
         </div>
       ) : (
-        <p className="text-center font-exo-2 text-lg lg:text-xl">No items yet...Continue shopping to explore more</p>
+        <p className="text-center font-exo-2 text-lg lg:text-xl">
+          No items yet...Continue shopping to explore more
+        </p>
       )}
+      <section className="mt-36">
+        <h2 className="text-center font-bold text-[#212121] mb-[100px] text-3xl md:text-[40px] leading-[48px]">
+          {cartItems?.length > 0 ? "YOU MIGHT ALSO LIKE" : "CONTINUE SHOPPING"}
+        </h2>
+        <ProductListing />
+      </section>
     </section>
   );
 }
