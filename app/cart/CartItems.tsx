@@ -8,7 +8,9 @@ import Image from "next/image";
 type Props = {};
 
 export default function CartItems({}: Props) {
-  const { cartItems,addToCart, removeFromCart } = useShopContext();
+  const { cartItems, addToCart, removeFromCart } = useShopContext();
+  const calculateTotal = () =>
+    cartItems.reduce((ack: number, item: CartProps) => ack + item.quantity * item.price, 0);
 
 
   return (
@@ -39,14 +41,17 @@ export default function CartItems({}: Props) {
                     {item.name}
                   </h2>
                   <p className="font-exo-2 text-lg text-[#6E6E6E]">
-                    {item.price}
+                    {item.price.toLocaleString()}
                   </p>
                 </div>
               </div>
               {/* qty */}
               <div className="w-fit ml-auto md:ml-0 text-center">
                 <div className="border mb-[14px] border-[#A1A1A1] py-3 px-[14px] flex gap-2 items-center">
-                  <button onClick={() => removeFromCart?.(item)} className="w-[42px] flex justify-center">
+                  <button
+                    onClick={() => removeFromCart?.(item)}
+                    className="w-[42px] flex justify-center"
+                  >
                     <Image
                       src="/minus.svg"
                       alt="minus icon"
@@ -56,7 +61,10 @@ export default function CartItems({}: Props) {
                     />
                   </button>
                   <span className="font-exo-2">{item.quantity}</span>
-                  <button onClick={() => addToCart?.(item)} className="w-[42px] flex justify-center">
+                  <button
+                    onClick={() => addToCart?.(item)}
+                    className="w-[42px] flex justify-center"
+                  >
                     <Image
                       src="/plus.svg"
                       alt="plus icon"
@@ -66,17 +74,22 @@ export default function CartItems({}: Props) {
                     />
                   </button>
                 </div>
-                <span className="font-exo-2 cursor-pointer" onClick={() => removeFromCart?.(item)}>Remove</span>
+                <span
+                  className="font-exo-2 cursor-pointer"
+                  onClick={() => removeFromCart?.(item)}
+                >
+                  Remove
+                </span>
               </div>
               <p className="hidden md:inline-block text-lg font-exo-2 font-bold text-[#3B3B3B]">
-                N200,000.00
+                N{(item.quantity * Number(item.price)).toFixed(2)}
               </p>
             </div>
           ))}
           <div className="md:w-[312px] ml-auto">
             <div className="mb-10 mt-[34px] text-xl flex items-center justify-between">
               <p className="font-semibold">SUBTOTAL</p>
-              <p className="font-exo-2">N0.00</p>
+              <p className="font-exo-2">N{calculateTotal().toFixed(2)}</p>
             </div>
             <CheckoutBtn />
           </div>

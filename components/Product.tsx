@@ -11,6 +11,7 @@ export default function Product({ item }: Props) {
   const { addToCart } = useShopContext();
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState<boolean>(false);
+  const formattedPrice = item?.price.toLocaleString(); 
   const [addToCartSuccessful, setAddToCartSuccessful] =
     useState<boolean>(false);
 
@@ -57,7 +58,7 @@ export default function Product({ item }: Props) {
         {item?.name}
       </h2>
       <p id="price" className="font-exo-2">
-        N{item?.price}
+        N{formattedPrice}.00
       </p>
       {/* cart icon */}
       <div

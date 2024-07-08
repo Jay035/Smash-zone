@@ -75,6 +75,7 @@ export const ShopContextProvider = ({ children }: Props) => {
         }
       }, [] as CartProps[])
     );
+    console.log(cartItems);
   };
 
   
