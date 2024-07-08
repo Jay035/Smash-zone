@@ -1,24 +1,24 @@
+import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
 import { useState } from "react";
+import { Products } from "./data";
 
-type Props = {
-  currentPage: number;
-  dataLength: number;
-  itemsPerPage: number;
-  onPageChange: (page: number) => void;
-};
+type Props ={
+  itemsPerPage: number
+}
 
-export default function Pagination({
-  currentPage,
-  dataLength,
-  itemsPerPage,
-  onPageChange,
-}: Props) {
+export default function Pagination({itemsPerPage}: Props) {
+  const { currentPage, setCurrentPage } = useShopContext();
+  const dataLength = Products?.length
   const totalPages = Math.ceil(dataLength / itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage?.(page);
+  };
 
   const handlePageClick = (page: number) => {
     if (page >= 1 && page <= totalPages) {
-      onPageChange(page);
+      handlePageChange(page);
     }
   };
 
@@ -29,13 +29,15 @@ export default function Pagination({
       pageNumbers.push(
         <button
           key={i}
-
-          // work on this func 
-          onClick={() => {handlePageClick(i)
-            console.log(i, currentPage)
+          // work on this func
+          onClick={() => {
+            handlePageClick(i);
+            console.log(i, currentPage);
           }}
           className={` flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 hover:bg-[#EDEDED]/70 ${
-            i === currentPage ? "bg-black text-white" : "bg-[#EDEDED] text-[#3b3b3b]"
+            i === currentPage
+              ? "bg-black text-white"
+              : "bg-[#EDEDED] text-[#3b3b3b]"
           }`}
         >
           {i}
@@ -52,7 +54,7 @@ export default function Pagination({
       <button
         disabled={currentPage === 1}
         className=" bg-[#EDEDED] flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 hover:bg-[#EDEDED]/70 "
-        onClick={() => handlePageClick(currentPage - 1)}
+        onClick={() => handlePageClick(currentPage! - 1)}
       >
         <Image
           src="/chevron-right.svg"
@@ -79,7 +81,7 @@ export default function Pagination({
       <button
         disabled={currentPage === totalPages}
         className=" bg-[#EDEDED] flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 hover:bg-[#EDEDED]/70 "
-        onClick={() => handlePageClick(currentPage + 1)}
+        onClick={() => handlePageClick(currentPage! + 1)}
       >
         <Image
           src="/chevron-right.svg"

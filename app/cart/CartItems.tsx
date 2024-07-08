@@ -4,11 +4,13 @@ import CheckoutBtn from "@/components/CheckoutBtn";
 import ProductListing from "@/components/ProductListing";
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 type Props = {};
 
 export default function CartItems({}: Props) {
   const { cartItems } = useShopContext();
+
 
   return (
     <section>
@@ -90,7 +92,7 @@ export default function CartItems({}: Props) {
         <h2 className="text-center font-bold text-[#212121] mb-[100px] text-3xl md:text-[40px] leading-[48px]">
           {cartItems?.length > 0 ? "YOU MIGHT ALSO LIKE" : "CONTINUE SHOPPING"}
         </h2>
-        <ProductListing />
+        <ProductListing itemsPerPage={3} />
       </section>
     </section>
   );

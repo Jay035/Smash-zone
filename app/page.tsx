@@ -1,4 +1,4 @@
-"use client";
+
 
 import FilterBtn from "@/components/FilterBtn";
 import HeroSection from "@/components/HeroSection";
@@ -15,7 +15,7 @@ export default function Home() {
         <FilterBtn />
         <SortBtn />
       </div>
-      <ProductListing />
+      <ProductListing itemsPerPage={9} />
     </main>
   );
 }

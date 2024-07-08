@@ -5,10 +5,12 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useShopContext } from "@/context/ContextProvider";
 
 // COMPONENTS
 
 export const Navbar = () => {
+  const { cartItems } = useShopContext();
   const optionsRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [menuShown, setMenuShown] = useState<boolean>(false);
@@ -145,9 +147,11 @@ export const Navbar = () => {
                   height="0"
                   className="w-6 h-fit"
                 />
-                <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
-                  1
-                </div>
+                {cartItems.length > 0 && (
+                  <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
+                    {cartItems?.length}
+                  </div>
+                )}
               </Link>
             </div>
           </ul>
@@ -184,9 +188,11 @@ export const Navbar = () => {
             height="0"
             className="w-6 h-fit"
           />
-          <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
-            1
-          </div>
+          {cartItems.length > 0 && (
+            <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
+              {cartItems?.length}
+            </div>
+          )}
         </Link>
       </div>
 
