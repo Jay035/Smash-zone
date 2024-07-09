@@ -54,7 +54,7 @@ export function CheckoutItemsPreview({}: Props) {
           placeholder="Discount code or gift card"
           required={true}
         />
-        <button className="bg-[#3B3B3B] md:w-[268px] py-4 px-6 rounded-[10px] text-white">
+        <button disabled={!discountCode} className="bg-[#3B3B3B] disabled:hover:text-white hover:bg-transparent hover:text-[#3B3B3B] hover:border hover:border-[#3B3B3B] disabled:bg-[#3B3B3B]/90 md:w-[268px] py-4 px-6 rounded-[10px] text-white">
           APPLY
         </button>
       </div>
@@ -72,7 +72,9 @@ export function CheckoutItemsPreview({}: Props) {
         <p className="">TOTAL</p>
         <p className="">N{calculateTotal().toFixed(2)}</p>
       </div>
-      <button className="bg-[#212121] lg:hidden rounded-[10px] text-white font-exo-2 mb-16 w-full px-6 py-4">PAY NOW</button>
+      <button className="bg-[#212121] hover:bg-white hover:border-[#212121] hover:border hover:text-[#3B3B3B] lg:hidden rounded-[10px] text-white font-exo-2 mb-16 w-full px-6 py-4">
+        PAY NOW
+      </button>
     </section>
   );
 }

@@ -22,7 +22,7 @@ export default function Form({}: Props) {
 
       <ShippingDetails />
       <PaymentMethod />
-      <button className="bg-[#212121] hidden lg:block rounded-[10px] text-white font-exo-2 mb-16 w-full px-6 py-4">PAY NOW</button>
+      <button className="bg-[#3B3B3B] hover:bg-transparent hover:text-[#3B3B3B] hover:border hover:border-[#3B3B3B] disabled:bg-[#3B3B3B]/80 hidden lg:block rounded-[10px] text-white font-exo-2 mb-16 w-full px-6 py-4">PAY NOW</button>
   
     </form>
   );
