@@ -34,7 +34,7 @@ export default function Pagination({itemsPerPage}: Props) {
             handlePageClick(i);
             console.log(i, currentPage);
           }}
-          className={` flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 hover:bg-[#EDEDED]/70 ${
+          className={` flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 ${
             i === currentPage
               ? "bg-black text-white"
               : "bg-[#EDEDED] text-[#3b3b3b]"
