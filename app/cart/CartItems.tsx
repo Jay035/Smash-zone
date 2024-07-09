@@ -3,15 +3,21 @@
 import CheckoutBtn from "@/components/CheckoutBtn";
 import ProductListing from "@/components/ProductListing";
 import { useShopContext } from "@/context/ContextProvider";
+import useCart from "@/hooks/useCart";
 import Image from "next/image";
 
 type Props = {};
 
 export default function CartItems({}: Props) {
-  const { cartItems, addToCart, removeFromCart, decreaseItemQuantity } = useShopContext();
+  const { cartItems, addToCart, removeFromCart, decreaseItemQuantity } =
+    useShopContext();
   const calculateTotal = () =>
-    cartItems.reduce((ack: number, item: CartProps) => ack + item.quantity * item.price, 0);
+    cartItems.reduce(
+      (ack: number, item: CartProps) => ack + item.quantity * item.price,
+      0
+    );
 
+    const formattedAmt = calculateTotal().toLocaleString();
 
   return (
     <section>
@@ -89,7 +95,7 @@ export default function CartItems({}: Props) {
           <div className="md:w-[312px] ml-auto">
             <div className="mb-10 mt-[34px] text-xl flex items-center justify-between">
               <p className="font-semibold">SUBTOTAL</p>
-              <p className="font-exo-2">N{calculateTotal().toFixed(2)}</p>
+              <p className="font-exo-2">N{formattedAmt}.00</p>
             </div>
             <CheckoutBtn />
           </div>

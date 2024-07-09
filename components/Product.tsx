@@ -2,6 +2,7 @@ import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Toast } from "./Toast";
+// import useCart from "@/hooks/useCart";
 
 type Props = {
   item: any;
@@ -9,9 +10,11 @@ type Props = {
 
 export default function Product({ item }: Props) {
   const { addToCart } = useShopContext();
+  // const { addItemToCart, cart, removeItemFromCart } = useCart();
+
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState<boolean>(false);
-  const formattedPrice = item?.price.toLocaleString(); 
+  const formattedPrice = item?.price.toLocaleString();
   const [addToCartSuccessful, setAddToCartSuccessful] =
     useState<boolean>(false);
 
@@ -19,7 +22,9 @@ export default function Product({ item }: Props) {
     e.preventDefault();
     console.log("Added to cart");
     addToCart?.(item);
-    setAddToCartSuccessful(true)
+    // addItemToCart(item)
+    // console.log(cart)
+    setAddToCartSuccessful(true);
     setShowModal(true);
     setTimeout(() => {
       setShowModal?.(false);
@@ -35,7 +40,7 @@ export default function Product({ item }: Props) {
         <div className="flex items-center gap-2">
           <i
             className={`${
-              addToCartSuccessful 
+              addToCartSuccessful
                 ? "ri-checkbox-circle-line text-green-500"
                 : "ri-error-warning-fill text-red-500"
             } text-xl`}

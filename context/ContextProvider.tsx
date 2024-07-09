@@ -29,15 +29,12 @@ export const ShopContextProvider = ({ children }: Props) => {
   const [sliceValue, setSliceValue] = useState(1);
 
   // CART
-  const [cartItems, setCartItems] = useState([
-    
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
   const getTotalItemsInCart = (items: CartProps[]) =>
     items?.reduce((acc, item) => acc + item.quantity, 0);
 
   const addToCart = (product: CartProps) => {
-    console.log(product);
     setCartItems((prev: any) => {
       const ProductInCart = cartItems?.find(
         (item: CartProps) => item?.id === product.id
@@ -54,35 +51,42 @@ export const ShopContextProvider = ({ children }: Props) => {
         return [...prev, { ...product, quantity: 1 }];
       }
     });
-    console.log(cartItems);
   };
 
   const decreaseItemQuantity = ({ id }: CartProps) => {
-    setCartItems((prev: any) =>
-      prev.reduce((acc: any, item: CartProps) => {
-        if (item.id === id) {
-          if (item.quantity === 1) return acc;
-          return [...acc, { ...item, quantity: item.quantity - 1 }];
-        } else {
-          return [...acc, item];
-        }
-      }, [] as CartProps[])
-    );
+    setCartItems((prev: any) => {
+      // prev.reduce((acc: any, item: CartProps) => {
+      //   if (item.id === id) {
+      //     if (item.quantity === 1) return acc;
+      //     return [...acc, { ...item, quantity: item.quantity - 1 }];
+      //   } else {
+      //     return [...acc, item];
+      //   }
+      // }, [] as CartProps[])
+
+      return prev
+        .map((cartItem: CartProps) =>
+          cartItem.id === id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        )
+        .filter((cartItem: CartProps) => cartItem.quantity > 0);
+    });
 
     console.log(cartItems);
   };
 
-  const removeFromCart = ({ id }: CartProps) => {
-    setCartItems((currItems) => {
-      return currItems.filter((item: CartProps) => item.id !== id);
+  const removeFromCart = (id: number) => {
+    console.log("remove from cart", id);
+    setCartItems((prev) => {
+      return prev.filter((item: CartProps) => item.id !== id);
     });
   };
 
   // const storedCartItems =
-	// 		localStorage.getItem("cartItems");
-	// 	if (storedCartItems)
-	// 		setCartItems(storedCartItems);
-
+  // 		localStorage.getItem("cartItems");
+  // 	if (storedCartItems)
+  // 		setCartItems(storedCartItems);
 
   const value = {
     cartItems,
