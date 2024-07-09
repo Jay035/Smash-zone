@@ -37,7 +37,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className={` ${scrolled ? "bg-[#212121]/90" : "bg-[##212121]"}
+      className={` ${scrolled ? "bg-[#212121]/90" : "bg-[#212121]"}
         
        fixed top-0 left-0 z-50 font-exo-2 flex justify-between items-center w-full py-6 px-4 md:px-8 lg:px-10`}
     >
@@ -134,7 +134,7 @@ export const Navbar = () => {
                   className="w-6 h-fit"
                 />
                 {cartItems.length > 0 && (
-                  <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
+                  <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FCD269]">
                     {cartItems.length}
                   </div>
                 )}
@@ -175,7 +175,7 @@ export const Navbar = () => {
             className="w-6 h-fit"
           />
           {cartItems.length > 0 && (
-            <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
+            <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FCD269]">
               {cartItems.length}
             </div>
           )}
