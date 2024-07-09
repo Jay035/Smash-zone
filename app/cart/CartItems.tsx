@@ -115,7 +115,7 @@ export default function CartItems({}: Props) {
             </div>
             <CheckoutBtn />
           </div>
-          ;
+          
         </div>
       ) : (
         <p className="text-center font-exo-2 text-lg lg:text-xl">
