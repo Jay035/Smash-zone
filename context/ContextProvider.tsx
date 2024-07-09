@@ -9,7 +9,7 @@ export const ShopContext = createContext<ShopProps>({
 
 type ShopProps = {
   cartItems: any;
-  updateCartItem?: (x: CartProps, qty: number) => void;
+  updateCartItem?: (id: number, qty: number) => void;
   addToCart?: (x: CartProps) => void;
   decreaseItemQuantity?: (x: CartProps) => void;
   removeFromCart?: (x: any) => void;
@@ -52,22 +52,15 @@ export const ShopContextProvider = ({ children }: Props) => {
         return [...prev, { ...product, quantity: 1 }];
       }
     });
+    console.log(cartItems)
   };
-  const updateCartItem = (product: CartProps, qty: number) => {
-    setCartItems((prev: any) => {
-      const ProductInCart = cartItems?.find(
-        (item: CartProps) => item?.id === product.id
-      );
-      // is the product already in the cart
-      if (ProductInCart) {
-        return prev?.map((item: CartProps) =>
-          item.id === product.id ? { ...item, quantity: qty } : item
-        );
-      } else {
-        // add to cart
-        return [...prev, { ...product, quantity: 1 }];
-      }
-    });
+  const updateCartItem = (id: number, qty: number) => {
+    setCartItems((prev: any) =>
+      prev.map((item: CartProps) =>
+        item.id === id ? { ...item, quantity: qty } : item
+      )
+    );
+    console.log(cartItems, qty)
   };
 
   const decreaseItemQuantity = ({ id }: CartProps) => {

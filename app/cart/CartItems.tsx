@@ -8,15 +8,20 @@ import Image from "next/image";
 type Props = {};
 
 export default function CartItems({}: Props) {
-  const { cartItems, addToCart, updateCartItem, removeFromCart, decreaseItemQuantity } =
-    useShopContext();
+  const {
+    cartItems,
+    addToCart,
+    updateCartItem,
+    removeFromCart,
+    decreaseItemQuantity,
+  } = useShopContext();
   const calculateTotal = () =>
     cartItems.reduce(
       (ack: number, item: CartProps) => ack + item.quantity * item.price,
       0
     );
 
-    const formattedAmt = calculateTotal().toLocaleString();
+  const formattedAmt = calculateTotal().toLocaleString();
 
   return (
     <section>
@@ -65,7 +70,16 @@ export default function CartItems({}: Props) {
                       className="w-6 h-6"
                     />
                   </button>
-                  <input className="font-exo-2 text-center w-[42px] outline-none border-none" onChange={(e: any) => updateCartItem?.(item, e.target.value)} type="number" name="quantity" id="quantity" value={item?.quantity} />
+                  <input
+                    className="font-exo-2 text-center w-[42px] outline-none border-none"
+                    onChange={(e: any) =>
+                      updateCartItem?.(item.id, e.target.value)
+                    }
+                    type="number"
+                    name="quantity"
+                    id="quantity"
+                    value={item?.quantity}
+                  />
                   {/* <span className="font-exo-2">{item.quantity}</span> */}
                   <button
                     onClick={() => addToCart?.(item)}
@@ -95,7 +109,9 @@ export default function CartItems({}: Props) {
           <div className="md:w-[312px] ml-auto">
             <div className="mb-10 mt-[34px] text-xl flex items-center justify-between">
               <p className="font-semibold">SUBTOTAL</p>
-              <p className="font-exo-2 text-[#3B3B3B] font-bold text-xl">N{formattedAmt}.00</p>
+              <p className="font-exo-2 text-[#3B3B3B] font-bold text-xl">
+                N{formattedAmt}.00
+              </p>
             </div>
             <CheckoutBtn />
           </div>
