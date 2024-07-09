@@ -1,6 +1,6 @@
 "use client";
 
-import CheckoutBtn from "@/components/CheckoutBtn";
+import { CheckoutBtn } from "@/components/CheckoutBtn";
 import { ProductListing } from "@/components/ProductListing";
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
@@ -102,7 +102,7 @@ export default function CartItems({}: Props) {
                 </span>
               </div>
               <p className="hidden w-fit md:inline-block text-lg font-exo-2 font-bold text-[#3B3B3B]">
-                N{(item.quantity * Number(item.price)).toFixed(2)}
+                &#8358;{(item.quantity * Number(item.price)).toFixed(2)}
               </p>
             </div>
           ))}
@@ -110,7 +110,7 @@ export default function CartItems({}: Props) {
             <div className="mb-10 mt-[34px] text-xl flex items-center justify-between">
               <p className="font-semibold">SUBTOTAL</p>
               <p className="font-exo-2 text-[#3B3B3B] font-bold text-xl">
-                N{formattedAmt}.00
+                &#8358;{formattedAmt}.00
               </p>
             </div>
             <CheckoutBtn />

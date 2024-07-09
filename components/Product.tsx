@@ -63,7 +63,7 @@ export function Product({ item }: Props) {
         {item?.name}
       </h2>
       <p id="price" className="font-exo-2">
-        N{formattedPrice}.00
+      &#8358;{formattedPrice}.00
       </p>
       {/* cart icon */}
       <div

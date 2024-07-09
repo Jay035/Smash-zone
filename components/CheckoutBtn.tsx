@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 
 type Props = {};
 
-export default function CheckoutBtn({}: Props) {
+export function CheckoutBtn({}: Props) {
   const router = useRouter();
   return (
     <button
