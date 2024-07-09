@@ -7,7 +7,7 @@ import SortBtn from "@/components/SortBtn";
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-[92px]">
       <HeroSection />
       <div
         className={`font-exo-2 flex justify-between px-4 md:px-8 lg:px-10 items-center border-b border-[#A1A1A1]`}
