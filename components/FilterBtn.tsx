@@ -18,7 +18,7 @@ export default function FilterBtn() {
           alt="arrow down"
           width="0"
           height="0"
-          className="w-4 h-4"
+          className="w-4 h-4 hidden sm:inline-block"
         />
       </button>
     </div>
