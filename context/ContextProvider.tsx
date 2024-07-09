@@ -54,13 +54,13 @@ export const ShopContextProvider = ({ children }: Props) => {
     });
     console.log(cartItems)
   };
-  const updateCartItem = (id: number, qty: number) => {
+  const updateCartItem = (id: number, quantity: number) => {
     setCartItems((prev: any) =>
       prev.map((item: CartProps) =>
-        item.id === id ? { ...item, quantity: qty } : item
+        item.id === id ? { ...item, quantity } : console.log('item not found')
       )
     );
-    console.log(cartItems, qty)
+    console.log(cartItems, quantity)
   };
 
   const decreaseItemQuantity = ({ id }: CartProps) => {

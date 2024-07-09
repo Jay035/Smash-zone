@@ -17,7 +17,7 @@ export default function CartItems({}: Props) {
   } = useShopContext();
   const calculateTotal = () =>
     cartItems.reduce(
-      (ack: number, item: CartProps) => ack + item.quantity * item.price,
+      (ack: number, item: CartProps) => ack + item?.quantity * item?.price,
       0
     );
 
@@ -40,7 +40,7 @@ export default function CartItems({}: Props) {
             >
               <div className="flex items-center gap-4 justify-between">
                 <Image
-                  src={item.image}
+                  src={item?.image}
                   alt="product image"
                   width="0"
                   height="0"
@@ -48,16 +48,16 @@ export default function CartItems({}: Props) {
                 />
                 <div className="min-w-[137px]">
                   <h2 className="text-xl font-medium text-[#6E6E6E]">
-                    {item.name}
+                    {item?.name}
                   </h2>
                   <p className="font-exo-2 text-lg font-bold text-[#3B3B3B]">
-                    {item.price.toLocaleString()}
+                    {item?.price.toLocaleString()}
                   </p>
                 </div>
               </div>
               {/* qty */}
               <div className="w-fit ml-auto md:ml-0 text-center">
-                <div className="border mb-[14px] border-[#A1A1A1] py-3 px-[14px] flex items-center">
+                <div className="border mb-[14px] border-[#A1A1A1] py-3 px-[14px] flex items-center gap-2">
                   <button
                     onClick={() => decreaseItemQuantity?.(item)}
                     className="w-[42px] flex justify-center"
@@ -70,17 +70,17 @@ export default function CartItems({}: Props) {
                       className="w-6 h-6"
                     />
                   </button>
-                  <input
+                  {/* <input
                     className="font-exo-2 text-center w-[42px] outline-none border-none"
                     onChange={(e: any) =>
-                      updateCartItem?.(item.id, e.target.value)
+                      updateCartItem?.(item?.id, e.target.value)
                     }
                     type="number"
                     name="quantity"
                     id="quantity"
-                    value={item?.quantity}
-                  />
-                  {/* <span className="font-exo-2">{item.quantity}</span> */}
+                    value={item?.quantity || 0}
+                  /> */}
+                  <span className="font-exo-2">{item.quantity}</span>
                   <button
                     onClick={() => addToCart?.(item)}
                     className="w-[42px] flex justify-center"
@@ -96,7 +96,7 @@ export default function CartItems({}: Props) {
                 </div>
                 <span
                   className="font-exo-2 cursor-pointer"
-                  onClick={() => removeFromCart?.(item.id)}
+                  onClick={() => removeFromCart?.(item?.id)}
                 >
                   Remove
                 </span>

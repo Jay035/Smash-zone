@@ -44,7 +44,13 @@ export default function Form({}: Props) {
         {/* nav */}
         <div className="flex gap-2 items-center font-exo-2">
           {navItems?.map((item: any) => (
-            <Link key={item.id} href={item.route} className={`${path === item.route ? 'text-[#212121]' : 'text-[#6E6E6E]'} hover:text-[#212121] after:mx-[7px] after:content-['/'] last:after:content-none`}>
+            <Link
+              key={item.id}
+              href={item.route}
+              className={`${
+                path === item.route ? "text-[#212121]" : "text-[#6E6E6E]"
+              } hover:text-[#212121] after:mx-[7px] after:content-['/'] last:after:content-none`}
+            >
               {item.text}
             </Link>
           ))}
@@ -68,15 +74,15 @@ export default function Form({}: Props) {
       <ShippingDetails />
       <PaymentMethod />
       <div className="lg:flex text-center justify-between items-center gap-8 mb-16">
-        <button className="bg-[#3B3B3B] font-medium hover:bg-transparent hover:text-[#3B3B3B] hover:border hover:border-[#3B3B3B] disabled:bg-[#3B3B3B]/80 hidden lg:block rounded-[10px] text-white font-exo-2 w-full px-6 py-4">
-          PAY NOW
-        </button>
         <Link
           href="/cart"
-          className="bg-transparent hidden lg:block hover:bg-[#212121] border-[#6E6E6E] border text-[#6E6E6E] rounded-[10px] font-medium font-exo-2 w-full px-6 py-4"
+          className="bg-transparent hidden lg:block hover:bg-[#212121] hover:text-white border-[#6E6E6E] border text-[#6E6E6E] rounded-[10px] font-medium font-exo-2 w-full px-6 py-4"
         >
           BACK TO CART
         </Link>
+        <button className="bg-[#212121] font-medium hover:bg-transparent hover:text-[#3B3B3B] hover:border hover:border-[#3B3B3B] disabled:bg-[#3B3B3B]/80 hidden lg:block rounded-[10px] text-white font-exo-2 w-full px-6 py-4">
+          PAY NOW
+        </button>
       </div>
     </div>
   );
