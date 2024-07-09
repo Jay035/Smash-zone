@@ -24,13 +24,13 @@ export default function CartItems({}: Props) {
         <div className="">
           {/* cart item headers */}
           <div className="hidden md:flex justify-between border-b py-5 border-[#6E6E6E] items-center">
-            <h1>PRODUCT</h1>
-            <h1>QTY.</h1>
-            <h1>TOTAL</h1>
+            <h1 className="w-fit">PRODUCT</h1>
+            <h1 className="w-fit">QTY.</h1>
+            <h1 className="w-fit">TOTAL</h1>
           </div>
           {cartItems?.map((item: CartProps) => (
             <div
-              className="border-b text-[#3B3B3B] md:flex md:justify-between items-center border-[#6E6E6E] py-8"
+              className="border-b text-[#3B3B3B] justify-between md:flex items-center border-[#6E6E6E] py-8"
               key={item.id}
             >
               <div className="flex items-center gap-4 justify-between">
@@ -87,7 +87,7 @@ export default function CartItems({}: Props) {
                   Remove
                 </span>
               </div>
-              <p className="hidden md:inline-block text-lg font-exo-2 font-bold text-[#3B3B3B]">
+              <p className="hidden w-fit md:inline-block text-lg font-exo-2 font-bold text-[#3B3B3B]">
                 N{(item.quantity * Number(item.price)).toFixed(2)}
               </p>
             </div>
