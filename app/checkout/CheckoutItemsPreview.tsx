@@ -3,6 +3,7 @@
 import { Custominput } from "@/components/Custominput";
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 type Props = {};
@@ -71,16 +72,21 @@ export function CheckoutItemsPreview({}: Props) {
           <p className="">Free</p>
         </div>
       </div>
-      <div className="flex font-exo-2 text-lg font-bold items-center justify-between mt-6 mb-[72px]">
+      <div className="flex font-exo-2 text-lg font-bold items-center justify-between mt-6 mb-[60px] md:mb-[88px]">
         <p className="">TOTAL</p>
         <p className="">N{calculateTotal().toFixed(2)}</p>
       </div>
-      <button className="bg-[#212121] hover:bg-white hover:border-[#212121] hover:border hover:text-[#3B3B3B] lg:hidden rounded-[10px] text-white font-medium font-exo-2 mb-6 w-full px-6 py-4">
-        PAY NOW
-      </button>
-      <button className="bg-transparent hover:bg-[#212121] border-[#6E6E6E] border text-[#6E6E6E] lg:hidden rounded-[10px] font-medium font-exo-2 mb-16 w-full px-6 py-4">
-        BACK TO CART
-      </button>
+      <div className="flex mb-16 text-center flex-col lg:hidden justify-between items-center gap-6">
+        <button className="bg-[#212121] hover:bg-white hover:border-[#212121] hover:border hover:text-[#3B3B3B] rounded-[10px] text-white font-medium font-exo-2 w-full px-6 py-4">
+          PAY NOW
+        </button>
+        <Link
+          href="/cart"
+          className="bg-transparent hover:bg-[#212121] border-[#6E6E6E] border text-[#6E6E6E] rounded-[10px] font-medium font-exo-2 w-full px-6 py-4"
+        >
+          BACK TO CART
+        </Link>
+      </div>
     </section>
   );
 }

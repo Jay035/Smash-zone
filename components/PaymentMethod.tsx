@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Custominput } from "./Custominput";
+import Image from "next/image";
 
 type Props = {};
 
@@ -23,7 +24,9 @@ export function PaymentMethod({}: Props) {
         {/* credit_card_payment */}
         <label
           htmlFor="credit_card_payment"
-          className={`text-[#212121] ${!payWithCreditCard && 'opacity-70'} text-lg flex items-center gap-4 w-fit`}
+          className={`text-[#212121] ${
+            !payWithCreditCard && "opacity-70"
+          } text-lg flex items-center gap-4 w-fit`}
         >
           <div
             className={`rounded-full p-[5px] border-2 border-[#212121] flex cursor-pointer 
@@ -49,7 +52,9 @@ export function PaymentMethod({}: Props) {
         {/* paypal_payment */}
         <label
           htmlFor="paypal_payment"
-          className={`text-[#212121] ${!payWithPaypal && 'opacity-70'} text-lg flex items-center gap-4 w-fit`}
+          className={`text-[#212121] ${
+            !payWithPaypal && "opacity-70"
+          } text-lg flex items-center gap-4 w-fit`}
         >
           <div
             className={`rounded-full p-[5px] border-2 border-[#212121] flex cursor-pointer 
@@ -75,7 +80,9 @@ export function PaymentMethod({}: Props) {
         {/* giftcard_payment */}
         <label
           htmlFor="giftcard_payment"
-          className={`text-[#212121] ${!payWithGiftCard && 'opacity-70'} text-lg flex items-center gap-4 w-fit`}
+          className={`text-[#212121] ${
+            !payWithGiftCard && "opacity-70"
+          } text-lg flex items-center gap-4 w-fit`}
         >
           <div
             className={`rounded-full p-[5px] border-2 border-[#212121] flex cursor-pointer 
@@ -99,15 +106,25 @@ export function PaymentMethod({}: Props) {
           Use gift card
         </label>
       </div>
-      <Custominput
-        value={cardNo}
-        onChange={(e: any) => setCardNo(e.target.value)}
-        type="number"
-        name="card_number"
-        id="card_number"
-        placeholder="Card Number"
-        required={true}
-      />
+      <div className="relative">
+        <Custominput
+          value={cardNo}
+          onChange={(e: any) => setCardNo(e.target.value)}
+          type="number"
+          name="card_number"
+          id="card_number"
+          placeholder="Card Number"
+          required={true}
+        />
+        <Image
+          className="w-6 h-6 absolute top-4 right-6"
+          src="/padlock.svg"
+          width="0"
+          height="0"
+          alt="logo"
+          priority
+        />
+      </div>
       <div className="flex gap-4 flex-col md:flex-row">
         <Custominput
           value={cardExpirationDate}

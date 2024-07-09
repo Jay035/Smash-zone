@@ -37,7 +37,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className={` ${scrolled ? "bg-[#3B3B3B]/90" : "bg-[#3B3B3B]"}
+      className={` ${scrolled ? "bg-[#212121]/90" : "bg-[##212121]"}
         
        fixed top-0 left-0 z-50 font-exo-2 flex justify-between items-center w-full py-6 px-4 md:px-8 lg:px-10`}
     >
@@ -45,7 +45,7 @@ export const Navbar = () => {
         <Link href="/">
           <Image
             className="w-[189px]"
-            src="/Logotype&LogoMark.svg"
+            src="/header-logo.svg"
             width="0"
             height="0"
             alt="logo"
@@ -63,7 +63,7 @@ export const Navbar = () => {
           <ul
             className={` ${
               menuShown && "w-[80%]"
-            } whitespace-nowrap bg-[#3B3B3B] xl:bg-transparent h-screen xl:h-fit xl:w-fit flex flex-col xl:flex-row xl:justify-between gap-8 px-8 sm:px-[6vw] pt-40 xl:pt-0`}
+            } whitespace-nowrap bg-[#212121] xl:bg-transparent h-screen xl:h-fit xl:w-fit flex flex-col xl:flex-row xl:justify-between gap-8 px-8 sm:px-[6vw] pt-40 xl:pt-0`}
           >
             <li
               onClick={() => {
