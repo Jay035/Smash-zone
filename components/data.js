@@ -50,16 +50,16 @@ export const Products = [
   },
   {
     id: 8,
-    name: "SpinMaster 250",
-    price: 180000.00,
-    image: "/SpinMaster 250.svg",
+    name: "Baseline Breaker",
+    price: 200000.00,
+    image: "/Baseline breaker.svg",
     category: "Ratchet",
   },
   {
     id: 9,
-    name: "FeatherLite 100",
-    price: 150000.00,
-    image: "/FeatherLite 100.svg",
+    name: "NetPlay Pro",
+    price: 190000.00,
+    image: "/NetPlay Pro.svg",
     category: "Ratchet",
   },
   {

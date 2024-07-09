@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useShopContext } from "@/context/ContextProvider";
 
 export const Navbar = () => {
-  const { cartItems} = useShopContext();
+  const { cartItems } = useShopContext();
   const [menuShown, setMenuShown] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState(false);
 

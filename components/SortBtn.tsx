@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function SortBtn() {
   return (
     <div>
-      <button className="flex items-center gap-2 text-sm w-fit py-4 px-4 border-l border-[#A1A1A1]">
+      <button className="flex items-center gap-2 text-sm w-fit py-4 pl-4 border-l border-[#A1A1A1]">
         {" "}
         SORT BY
         <Image

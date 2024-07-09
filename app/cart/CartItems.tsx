@@ -3,13 +3,12 @@
 import CheckoutBtn from "@/components/CheckoutBtn";
 import ProductListing from "@/components/ProductListing";
 import { useShopContext } from "@/context/ContextProvider";
-import useCart from "@/hooks/useCart";
 import Image from "next/image";
 
 type Props = {};
 
 export default function CartItems({}: Props) {
-  const { cartItems, addToCart, removeFromCart, decreaseItemQuantity } =
+  const { cartItems, addToCart, updateCartItem, removeFromCart, decreaseItemQuantity } =
     useShopContext();
   const calculateTotal = () =>
     cartItems.reduce(
@@ -53,7 +52,7 @@ export default function CartItems({}: Props) {
               </div>
               {/* qty */}
               <div className="w-fit ml-auto md:ml-0 text-center">
-                <div className="border mb-[14px] border-[#A1A1A1] py-3 px-[14px] flex gap-2 items-center">
+                <div className="border mb-[14px] border-[#A1A1A1] py-3 px-[14px] flex items-center">
                   <button
                     onClick={() => decreaseItemQuantity?.(item)}
                     className="w-[42px] flex justify-center"
@@ -66,7 +65,8 @@ export default function CartItems({}: Props) {
                       className="w-6 h-6"
                     />
                   </button>
-                  <span className="font-exo-2">{item.quantity}</span>
+                  <input className="font-exo-2 text-center w-[42px] outline-none border-none" onChange={(e: any) => updateCartItem?.(item, e.target.value)} type="number" name="quantity" id="quantity" value={item?.quantity} />
+                  {/* <span className="font-exo-2">{item.quantity}</span> */}
                   <button
                     onClick={() => addToCart?.(item)}
                     className="w-[42px] flex justify-center"
@@ -95,7 +95,7 @@ export default function CartItems({}: Props) {
           <div className="md:w-[312px] ml-auto">
             <div className="mb-10 mt-[34px] text-xl flex items-center justify-between">
               <p className="font-semibold">SUBTOTAL</p>
-              <p className="font-exo-2 text-[#3B3B3B] fon-bold text-xl">N{formattedAmt}.00</p>
+              <p className="font-exo-2 text-[#3B3B3B] font-bold text-xl">N{formattedAmt}.00</p>
             </div>
             <CheckoutBtn />
           </div>

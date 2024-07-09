@@ -9,6 +9,7 @@ export const ShopContext = createContext<ShopProps>({
 
 type ShopProps = {
   cartItems: any;
+  updateCartItem?: (x: CartProps, qty: number) => void;
   addToCart?: (x: CartProps) => void;
   decreaseItemQuantity?: (x: CartProps) => void;
   removeFromCart?: (x: any) => void;
@@ -52,6 +53,22 @@ export const ShopContextProvider = ({ children }: Props) => {
       }
     });
   };
+  const updateCartItem = (product: CartProps, qty: number) => {
+    setCartItems((prev: any) => {
+      const ProductInCart = cartItems?.find(
+        (item: CartProps) => item?.id === product.id
+      );
+      // is the product already in the cart
+      if (ProductInCart) {
+        return prev?.map((item: CartProps) =>
+          item.id === product.id ? { ...item, quantity: qty } : item
+        );
+      } else {
+        // add to cart
+        return [...prev, { ...product, quantity: 1 }];
+      }
+    });
+  };
 
   const decreaseItemQuantity = ({ id }: CartProps) => {
     setCartItems((prev: any) => {
@@ -72,8 +89,6 @@ export const ShopContextProvider = ({ children }: Props) => {
         )
         .filter((cartItem: CartProps) => cartItem.quantity > 0);
     });
-
-    console.log(cartItems);
   };
 
   const removeFromCart = (id: number) => {
@@ -96,6 +111,7 @@ export const ShopContextProvider = ({ children }: Props) => {
     setSliceValue,
     addToCart,
     removeFromCart,
+    updateCartItem,
     decreaseItemQuantity,
     getTotalItemsInCart,
   };
