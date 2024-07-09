@@ -15,7 +15,7 @@ export default function CheckOut({}: Props) {
         <div className="bg-[#6E6E6EB2] h-[246px] absolute top-0 left-0 w-full"></div>
         <Link href="/">
           <Image
-            className="w-[313px] absolute top-[81px] sm:top-[83px] left-8 "
+            className="w-[313px] absolute top-[81px] sm:top-[83px] left-8 lg:left-10"
             src="/Logotype&LogoMark.svg"
             width="0"
             height="0"

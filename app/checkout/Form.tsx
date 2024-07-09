@@ -22,8 +22,10 @@ export default function Form({}: Props) {
 
       <ShippingDetails />
       <PaymentMethod />
-      <button className="bg-[#3B3B3B] hover:bg-transparent hover:text-[#3B3B3B] hover:border hover:border-[#3B3B3B] disabled:bg-[#3B3B3B]/80 hidden lg:block rounded-[10px] text-white font-exo-2 mb-16 w-full px-6 py-4">PAY NOW</button>
-  
+      <button className="bg-[#3B3B3B] mb-6 font-medium hover:bg-transparent hover:text-[#3B3B3B] hover:border hover:border-[#3B3B3B] disabled:bg-[#3B3B3B]/80 hidden lg:block rounded-[10px] text-white font-exo-2 w-full px-6 py-4">PAY NOW</button>
+      <button className="bg-transparent hidden lg:block mb-16 hover:bg-[#212121] border-[#6E6E6E] border text-[#6E6E6E] rounded-[10px] font-medium font-exo-2 w-full px-6 py-4">
+      BACK TO CART
+      </button>
     </form>
   );
 }

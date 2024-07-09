@@ -54,7 +54,10 @@ export function CheckoutItemsPreview({}: Props) {
           placeholder="Discount code or gift card"
           required={true}
         />
-        <button disabled={!discountCode} className="bg-[#3B3B3B] disabled:hover:text-white hover:bg-transparent hover:text-[#3B3B3B] hover:border hover:border-[#3B3B3B] disabled:bg-[#3B3B3B]/90 md:w-[268px] py-4 px-6 rounded-[10px] text-white">
+        <button
+          disabled={!discountCode}
+          className="bg-[#3B3B3B] disabled:hover:text-white hover:bg-transparent hover:text-[#3B3B3B] hover:border hover:border-[#3B3B3B] disabled:bg-[#3B3B3B]/90 md:w-[268px] py-4 px-6 rounded-[10px] text-white"
+        >
           APPLY
         </button>
       </div>
@@ -72,8 +75,11 @@ export function CheckoutItemsPreview({}: Props) {
         <p className="">TOTAL</p>
         <p className="">N{calculateTotal().toFixed(2)}</p>
       </div>
-      <button className="bg-[#212121] hover:bg-white hover:border-[#212121] hover:border hover:text-[#3B3B3B] lg:hidden rounded-[10px] text-white font-exo-2 mb-16 w-full px-6 py-4">
+      <button className="bg-[#212121] hover:bg-white hover:border-[#212121] hover:border hover:text-[#3B3B3B] lg:hidden rounded-[10px] text-white font-medium font-exo-2 mb-6 w-full px-6 py-4">
         PAY NOW
+      </button>
+      <button className="bg-transparent hover:bg-[#212121] border-[#6E6E6E] border text-[#6E6E6E] lg:hidden rounded-[10px] font-medium font-exo-2 mb-16 w-full px-6 py-4">
+        BACK TO CART
       </button>
     </section>
   );
