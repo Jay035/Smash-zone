@@ -5,7 +5,7 @@ import Image from "next/image";
 
 type Props = {};
 
-export default function HeroSection({}: Props) {
+export function HeroSection({}: Props) {
   return (
     <section className="relative text-white ">
       <Image

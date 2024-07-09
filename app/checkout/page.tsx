@@ -1,10 +1,9 @@
 import Image from "next/image";
-import Form from "./Form";
+import { Form } from "./Form";
 import mobileImg from "../../public/checkout-img-mobile.png";
 import tabletImg from "../../public/checkout-img-tablet.png";
 import desktopImg from "../../public/checkout-img-desktop.png";
 import { CheckoutItemsPreview } from "./CheckoutItemsPreview";
-import Link from "next/link";
 
 type Props = {};
 
@@ -13,7 +12,7 @@ export default function CheckOut({}: Props) {
     <main className="">
       <div className="relative">
         <div className="bg-[#6E6E6EB2] h-[246px] absolute top-0 left-0 w-full"></div>
-       
+
         {/* for mobile */}
         <Image
           width="0"

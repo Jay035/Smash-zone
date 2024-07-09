@@ -8,7 +8,7 @@ type Props = {
   item: any;
 };
 
-export default function Product({ item }: Props) {
+export function Product({ item }: Props) {
   const { addToCart } = useShopContext();
   // const { addItemToCart, cart, removeItemFromCart } = useCart();
 

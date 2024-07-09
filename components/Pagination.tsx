@@ -1,13 +1,12 @@
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
-import { useState } from "react";
 import { Products } from "./data";
 
 type Props ={
   itemsPerPage: number
 }
 
-export default function Pagination({itemsPerPage}: Props) {
+export  function Pagination({itemsPerPage}: Props) {
   const { currentPage, setCurrentPage } = useShopContext();
   const dataLength = Products?.length
   const totalPages = Math.ceil(dataLength / itemsPerPage);

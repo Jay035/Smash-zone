@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function SortBtn() {
+export function SortBtn() {
   return (
     <div>
       <button className="flex items-center gap-2 text-sm w-fit py-4 pl-4 border-l border-[#A1A1A1]">

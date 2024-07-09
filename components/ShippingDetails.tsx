@@ -16,7 +16,7 @@ export function ShippingDetails({}: Props) {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [postCode, setPostCode] = useState();
- 
+
   return (
     <section
       id="shipping_details"

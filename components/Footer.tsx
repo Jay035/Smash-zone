@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Newsletter from "./Newsletter";
+import { Newsletter } from "./Newsletter";
 import Link from "next/link";
 
 type Props = {};
 
-export default function Footer({}: Props) {
+export function Footer({}: Props) {
   return (
     <footer className="mt-[137px] text-[#212121] bg-[#FBC02D] px-4 md:px-8 lg:px-10 py-10">
       {/* PRODUCTS */}

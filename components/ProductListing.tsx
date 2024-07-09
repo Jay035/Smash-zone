@@ -1,15 +1,15 @@
 "use client";
 
 import { Products } from "@/components/data";
-import Product from "./Product";
-import Pagination from "./Pagination";
+import { Product } from "./Product";
+import { Pagination } from "./Pagination";
 import { useShopContext } from "@/context/ContextProvider";
 
 type Props = {
   itemsPerPage: number;
 };
 
-export default function ProductListing({ itemsPerPage }: Props) {
+export function ProductListing({ itemsPerPage }: Props) {
   const { currentPage } = useShopContext();
 
   // PAGINATION
@@ -18,6 +18,7 @@ export default function ProductListing({ itemsPerPage }: Props) {
     (currentPage! - 1) * itemsPerPage!,
     currentPage! * itemsPerPage!
   );
+
   return (
     <section className="">
       {paginatedItems?.length > 0 ? (

@@ -4,7 +4,7 @@ import { Custominput } from "@/components/Custominput";
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
 
 type Props = {};
 

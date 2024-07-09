@@ -1,9 +1,7 @@
-
-
-import FilterBtn from "@/components/FilterBtn";
-import HeroSection from "@/components/HeroSection";
-import ProductListing from "@/components/ProductListing";
-import SortBtn from "@/components/SortBtn";
+import { FilterBtn } from "@/components/FilterBtn";
+import { HeroSection } from "@/components/HeroSection";
+import { ProductListing } from "@/components/ProductListing";
+import { SortBtn } from "@/components/SortBtn";
 
 export default function Home() {
   return (

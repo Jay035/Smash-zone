@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 
 type Props = {};
 
-export default function Form({}: Props) {
+export function Form({}: Props) {
   const path = usePathname();
   const navItems = [
     {

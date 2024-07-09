@@ -1,7 +1,7 @@
 "use client";
 
 import CheckoutBtn from "@/components/CheckoutBtn";
-import ProductListing from "@/components/ProductListing";
+import { ProductListing } from "@/components/ProductListing";
 import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
 
@@ -115,7 +115,6 @@ export default function CartItems({}: Props) {
             </div>
             <CheckoutBtn />
           </div>
-          
         </div>
       ) : (
         <p className="text-center font-exo-2 text-lg lg:text-xl">

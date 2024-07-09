@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Exo_2 } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { ShopContextProvider } from "@/context/ContextProvider";
 import BodyComponent from "./body";
 

@@ -4,7 +4,7 @@ import { Toast } from "./Toast";
 
 type Props = {};
 
-export default function Newsletter({}: Props) {
+export function Newsletter({}: Props) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState<boolean>(false);

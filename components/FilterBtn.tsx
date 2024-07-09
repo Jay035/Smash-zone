@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function FilterBtn() {
+export function FilterBtn() {
   return (
     <div>
       <button className="flex items-center gap-2 text-sm py-4 pr-4 w-fit border-r border-[#A1A1A1]">
