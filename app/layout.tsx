@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ShopContextProvider } from "@/context/ContextProvider";
+import BodyComponent from "./body";
 
 const playfairDisplay = Playfair_Display({ subsets: ["latin"] });
 
@@ -29,9 +30,10 @@ export default function RootLayout({
         className={`${playfairDisplay.className} ${exo_2.variable} scroll-smooth overflow-x-hidden`}
       >
         <ShopContextProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <BodyComponent>
+            
+            {children}
+          </BodyComponent>
         </ShopContextProvider>
       </body>
     </html>

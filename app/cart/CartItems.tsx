@@ -8,7 +8,7 @@ import Image from "next/image";
 type Props = {};
 
 export default function CartItems({}: Props) {
-  const { cartItems, addToCart, removeFromCart } = useShopContext();
+  const { cartItems, addToCart, removeFromCart, decreaseItemQuantity } = useShopContext();
   const calculateTotal = () =>
     cartItems.reduce((ack: number, item: CartProps) => ack + item.quantity * item.price, 0);
 
@@ -49,7 +49,7 @@ export default function CartItems({}: Props) {
               <div className="w-fit ml-auto md:ml-0 text-center">
                 <div className="border mb-[14px] border-[#A1A1A1] py-3 px-[14px] flex gap-2 items-center">
                   <button
-                    onClick={() => removeFromCart?.(item)}
+                    onClick={() => decreaseItemQuantity?.(item)}
                     className="w-[42px] flex justify-center"
                   >
                     <Image
@@ -76,7 +76,7 @@ export default function CartItems({}: Props) {
                 </div>
                 <span
                   className="font-exo-2 cursor-pointer"
-                  onClick={() => removeFromCart?.(item)}
+                  onClick={() => removeFromCart?.(item.id)}
                 >
                   Remove
                 </span>

@@ -9,8 +9,7 @@ import Link from "next/link";
 import { useShopContext } from "@/context/ContextProvider";
 
 export const Navbar = () => {
-  const { cartItems, getTotalItemsInCart } = useShopContext();
-  const totalItemsInCart = getTotalItemsInCart(cartItems);
+  const { cartItems} = useShopContext();
   const [menuShown, setMenuShown] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -136,7 +135,7 @@ export const Navbar = () => {
                 />
                 {cartItems.length > 0 && (
                   <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
-                    {totalItemsInCart}
+                    {cartItems.length}
                   </div>
                 )}
               </Link>
@@ -177,7 +176,7 @@ export const Navbar = () => {
           />
           {cartItems.length > 0 && (
             <div className="absolute top-0 right-0 w-3 h-3 flex justify-center items-center text-xs rounded-full text-[#3B3B3B] bg-[#FDE19B]">
-              {totalItemsInCart}
+              {cartItems.length}
             </div>
           )}
         </Link>

@@ -2,7 +2,7 @@ export function Toast({ children, showModal, setShowModal }: ModalProps) {
   return (
     <div
       className={`${
-        showModal ? "translate-x-0" : "translate-x-full"
+        showModal ? "translate-x-0" : "translate-x-[120%]"
       } fixed z-[99999999999999999] transition-transform ease-in border shadow-lg text-lg sm:text-xl top-3 right-3 bg-white px-2 py-4 w-full max-w-md h-fit flex justify-between items gap-4`}
     >
       {children}
