@@ -46,7 +46,7 @@ export default function CartItems({}: Props) {
                   <h2 className="text-xl font-medium text-[#6E6E6E]">
                     {item.name}
                   </h2>
-                  <p className="font-exo-2 text-lg text-[#6E6E6E]">
+                  <p className="font-exo-2 text-lg font-bold text-[#3B3B3B]">
                     {item.price.toLocaleString()}
                   </p>
                 </div>
@@ -95,7 +95,7 @@ export default function CartItems({}: Props) {
           <div className="md:w-[312px] ml-auto">
             <div className="mb-10 mt-[34px] text-xl flex items-center justify-between">
               <p className="font-semibold">SUBTOTAL</p>
-              <p className="font-exo-2">N{formattedAmt}.00</p>
+              <p className="font-exo-2 text-[#3B3B3B] fon-bold text-xl">N{formattedAmt}.00</p>
             </div>
             <CheckoutBtn />
           </div>
