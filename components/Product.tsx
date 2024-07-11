@@ -2,7 +2,6 @@ import { useShopContext } from "@/context/ContextProvider";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Toast } from "./Toast";
-// import useCart from "@/hooks/useCart";
 
 type Props = {
   item: any;
@@ -10,8 +9,6 @@ type Props = {
 
 export function Product({ item }: Props) {
   const { addToCart } = useShopContext();
-  // const { addItemToCart, cart, removeItemFromCart } = useCart();
-
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState<boolean>(false);
   const formattedPrice = item?.price.toLocaleString();
@@ -63,7 +60,7 @@ export function Product({ item }: Props) {
         {item?.name}
       </h2>
       <p id="price" className="font-exo-2">
-      &#8358;{formattedPrice}.00
+        &#8358;{formattedPrice}.00
       </p>
       {/* cart icon */}
       <div
