@@ -1,6 +1,7 @@
 "use client";
 
 import { Products } from "@/components/data";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ReactNode, createContext, useContext, useState } from "react";
 
 export const ShopContext = createContext<ShopProps>({
@@ -30,7 +31,10 @@ export const ShopContextProvider = ({ children }: Props) => {
   const [sliceValue, setSliceValue] = useState(1);
 
   // CART
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartProps[]>(
+    "shopping-cart",
+    []
+  );
 
   const getTotalItemsInCart = (items: CartProps[]) =>
     items?.reduce((acc, item) => acc + item.quantity, 0);
@@ -52,15 +56,15 @@ export const ShopContextProvider = ({ children }: Props) => {
         return [...prev, { ...product, quantity: 1 }];
       }
     });
-    console.log(cartItems)
+    console.log(cartItems);
   };
   const updateCartItem = (id: number, quantity: number) => {
     setCartItems((prev: any) =>
       prev.map((item: CartProps) =>
-        item.id === id ? { ...item, quantity } : console.log('item not found')
+        item.id === id ? { ...item, quantity } : console.log("item not found")
       )
     );
-    console.log(cartItems, quantity)
+    console.log(cartItems, quantity);
   };
 
   const decreaseItemQuantity = ({ id }: CartProps) => {
