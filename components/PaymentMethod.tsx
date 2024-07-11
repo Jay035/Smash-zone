@@ -75,7 +75,7 @@ export function PaymentMethod({}: Props) {
               id="paypal_payment"
             />
           </div>
-          Pay with Credit card
+          Pay with Paypal
         </label>
         {/* giftcard_payment */}
         <label
