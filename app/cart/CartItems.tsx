@@ -16,13 +16,12 @@ export default function CartItems({}: Props) {
     decreaseItemQuantity,
   } = useShopContext();
 
-  const calculateTotal = () => {
-    return cartItems.reduce(
-      (total: number, cartItem: CartProps) =>
-        total + Number(cartItem?.current_price[0].NGN) * cartItem?.quantity,
+  const calculateTotal = () =>
+    cartItems.reduce(
+      (ack: number, item: CartProps) => ack + item.quantity * Number(item?.current_price[0].NGN[0]),
       0
     );
-  };
+
   // const formattedAmt = calculateTotal().toLocaleString();
 
   return (
