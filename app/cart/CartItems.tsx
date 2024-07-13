@@ -15,13 +15,15 @@ export default function CartItems({}: Props) {
     removeFromCart,
     decreaseItemQuantity,
   } = useShopContext();
-  const calculateTotal = () =>
-    cartItems.reduce(
-      (ack: number, item: CartProps) => ack + item?.quantity * item?.price,
+
+  const calculateTotal = () => {
+    return cartItems.reduce(
+      (total: number, cartItem: CartProps) =>
+        total + Number(cartItem?.current_price[0].NGN) * cartItem?.quantity,
       0
     );
-
-  const formattedAmt = calculateTotal().toLocaleString();
+  };
+  // const formattedAmt = calculateTotal().toLocaleString();
 
   return (
     <section>
@@ -40,7 +42,11 @@ export default function CartItems({}: Props) {
             >
               <div className="flex items-center gap-4 justify-between">
                 <Image
-                  src={item?.image}
+                  src={
+                    item.photos[0] !== undefined
+                      ? `https://api.timbu.cloud/images/${item?.photos[0]?.url}`
+                      : ``
+                  }
                   alt="product image"
                   width="0"
                   height="0"
@@ -51,7 +57,7 @@ export default function CartItems({}: Props) {
                     {item?.name}
                   </h2>
                   <p className="font-exo-2 text-lg font-bold text-[#3B3B3B]">
-                    {item?.price.toLocaleString()}
+                    {item?.current_price[0].NGN}
                   </p>
                 </div>
               </div>
@@ -102,7 +108,10 @@ export default function CartItems({}: Props) {
                 </span>
               </div>
               <p className="hidden w-fit md:inline-block text-lg font-exo-2 font-bold text-[#3B3B3B]">
-                &#8358;{(item.quantity * Number(item.price)).toFixed(2)}
+                &#8358;
+                {(item.quantity * Number(item?.current_price[0].NGN)).toFixed(
+                  2
+                )}
               </p>
             </div>
           ))}
@@ -110,7 +119,7 @@ export default function CartItems({}: Props) {
             <div className="mb-10 mt-[34px] text-xl flex items-center justify-between">
               <p className="font-semibold">SUBTOTAL</p>
               <p className="font-exo-2 text-[#3B3B3B] font-bold text-xl">
-                &#8358;{formattedAmt}.00
+                &#8358;{calculateTotal()}.00
               </p>
             </div>
             <CheckoutBtn />

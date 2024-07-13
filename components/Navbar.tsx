@@ -33,7 +33,7 @@ export const Navbar = () => {
     return () => {
       window.removeEventListener("DOMContentLoaded", handleScroll);
     };
-  });
+  },[]);
 
   return (
     <header

@@ -14,7 +14,7 @@ export function CheckoutItemsPreview({}: Props) {
 
   const calculateTotal = () =>
     cartItems.reduce(
-      (ack: number, item: CartProps) => ack + item.quantity * item.price,
+      (ack: number, item: CartProps) => ack + item.quantity * Number(item?.current_price[0].NGN[0]),
       0
     );
 
@@ -28,8 +28,11 @@ export function CheckoutItemsPreview({}: Props) {
           <div className="flex gap-[42px]">
             <div className="relative font-exo-2 py-2 px-6 border border-[#6E6E6E]">
               <Image
-                src={item.image}
-                alt="product image"
+                src={
+                  item.photos[0] !== undefined
+                    ? `https://api.timbu.cloud/images/${item?.photos[0]?.url}`
+                    : ``
+                }alt="product image"
                 width="0"
                 height="0"
                 className="w-[32px] h-[88px]"
@@ -41,7 +44,7 @@ export function CheckoutItemsPreview({}: Props) {
             <h2 className="text-lg font-bold text-[#3B3B3B]">{item.name}</h2>
           </div>
           <p className="font-exo-2 text-lg text-[#6E6E6E]">
-            N{(item.quantity * Number(item.price)).toFixed(2)}
+          &#8358;{(item.quantity * Number(item?.current_price[0].NGN[0])).toFixed(2)}
           </p>
         </div>
       ))}

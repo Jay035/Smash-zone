@@ -11,7 +11,8 @@ export function Product({ item }: Props) {
   const { addToCart } = useShopContext();
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState<boolean>(false);
-  const formattedPrice = item?.price.toLocaleString();
+  const formattedPrice = item?.current_price[0].NGN;
+  // .toLocaleString();
   const [addToCartSuccessful, setAddToCartSuccessful] =
     useState<boolean>(false);
 
@@ -19,8 +20,6 @@ export function Product({ item }: Props) {
     e.preventDefault();
     console.log("Added to cart");
     addToCart?.(item);
-    // addItemToCart(item)
-    // console.log(cart)
     setAddToCartSuccessful(true);
     setShowModal(true);
     setTimeout(() => {
@@ -49,8 +48,13 @@ export function Product({ item }: Props) {
           )}
         </div>
       </Toast>
+
       <Image
-        src={item?.image}
+        src={
+          item.photos[0] !== undefined
+            ? `https://api.timbu.cloud/images/${item?.photos[0]?.url}`
+            : ``
+        }
         alt="product image"
         width="0"
         height="0"

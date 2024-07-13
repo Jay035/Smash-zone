@@ -1,8 +1,13 @@
 "use client";
 
-import { Products } from "@/components/data";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 export const ShopContext = createContext<ShopProps>({
   cartItems: [],
@@ -10,7 +15,7 @@ export const ShopContext = createContext<ShopProps>({
 
 type ShopProps = {
   cartItems: any;
-  updateCartItem?: (id: number, qty: number) => void;
+  updateCartItem?: (id: string, qty: number) => void;
   addToCart?: (x: CartProps) => void;
   decreaseItemQuantity?: (x: CartProps) => void;
   removeFromCart?: (x: any) => void;
@@ -19,6 +24,8 @@ type ShopProps = {
   sliceValue?: number;
   setSliceValue?: (page: number) => void;
   getTotalItemsInCart?: any;
+  loading?: boolean;
+  products?: ProductItem[];
 };
 
 type Props = {
@@ -26,6 +33,8 @@ type Props = {
 };
 
 export const ShopContextProvider = ({ children }: Props) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [products, setProducts] = useState<ProductItem[]>([]);
   // PAGINATION
   const [currentPage, setCurrentPage] = useState(1);
   const [sliceValue, setSliceValue] = useState(1);
@@ -58,7 +67,8 @@ export const ShopContextProvider = ({ children }: Props) => {
     });
     console.log(cartItems);
   };
-  const updateCartItem = (id: number, quantity: number) => {
+
+  const updateCartItem = (id: string, quantity: number) => {
     setCartItems((prev: any) =>
       prev.map((item: CartProps) =>
         item.id === id ? { ...item, quantity } : console.log("item not found")
@@ -68,15 +78,15 @@ export const ShopContextProvider = ({ children }: Props) => {
   };
 
   const decreaseItemQuantity = ({ id }: CartProps) => {
+    // prev.reduce((acc: any, item: CartProps) => {
+    //   if (item.id === id) {
+    //     if (item.quantity === 1) return acc;
+    //     return [...acc, { ...item, quantity: item.quantity - 1 }];
+    //   } else {
+    //     return [...acc, item];
+    //   }
+    // }, [] as CartProps[])
     setCartItems((prev: any) => {
-      // prev.reduce((acc: any, item: CartProps) => {
-      //   if (item.id === id) {
-      //     if (item.quantity === 1) return acc;
-      //     return [...acc, { ...item, quantity: item.quantity - 1 }];
-      //   } else {
-      //     return [...acc, item];
-      //   }
-      // }, [] as CartProps[])
 
       return prev
         .map((cartItem: CartProps) =>
@@ -88,17 +98,34 @@ export const ShopContextProvider = ({ children }: Props) => {
     });
   };
 
-  const removeFromCart = (id: number) => {
+  const removeFromCart = (id: string) => {
     console.log("remove from cart", id);
     setCartItems((prev) => {
       return prev.filter((item: CartProps) => item.id !== id);
     });
   };
 
-  // const storedCartItems =
-  // 		localStorage.getItem("cartItems");
-  // 	if (storedCartItems)
-  // 		setCartItems(storedCartItems);
+  async function getProducts() {
+    setLoading(true);
+    // try {
+    await fetch(
+      `https://api.timbu.cloud/products?organization_id=${process.env.NEXT_PUBLIC_Organization_ID}&Appid=${process.env.NEXT_PUBLIC_App_ID}&Apikey=${process.env.NEXT_PUBLIC_ApiKey}`
+    )
+      .then((response) => response.json())
+      .then((data: ProductResponse) => {
+        setProducts(data.items);
+        setLoading(false);
+        console.log(data.items);
+      });
+    // } catch (err) {
+    // console.log(err);
+    // setLoading(false);
+    // }
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const value = {
     cartItems,
@@ -111,6 +138,8 @@ export const ShopContextProvider = ({ children }: Props) => {
     updateCartItem,
     decreaseItemQuantity,
     getTotalItemsInCart,
+    loading,
+    products,
   };
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
