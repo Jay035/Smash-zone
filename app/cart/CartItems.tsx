@@ -56,7 +56,7 @@ export default function CartItems({}: Props) {
                     {item?.name}
                   </h2>
                   <p className="font-exo-2 text-lg font-bold text-[#3B3B3B]">
-                    {item?.current_price[0].NGN}
+                    {item?.current_price[0].NGN[0]}
                   </p>
                 </div>
               </div>

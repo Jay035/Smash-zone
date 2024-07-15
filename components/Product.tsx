@@ -11,7 +11,7 @@ export function Product({ item }: Props) {
   const { addToCart } = useShopContext();
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState<boolean>(false);
-  const formattedPrice = item?.current_price[0].NGN;
+  const formattedPrice = item?.current_price[0].NGN[0];
   // .toLocaleString();
   const [addToCartSuccessful, setAddToCartSuccessful] =
     useState<boolean>(false);
