@@ -108,7 +108,7 @@ export default function CartItems({}: Props) {
               </div>
               <p className="hidden w-fit md:inline-block text-lg font-exo-2 font-bold text-[#3B3B3B]">
                 &#8358;
-                {(item.quantity * Number(item?.current_price[0].NGN)).toFixed(
+                {(item.quantity * Number(item?.current_price[0].NGN[0])).toFixed(
                   2
                 )}
               </p>
