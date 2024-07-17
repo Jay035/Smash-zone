@@ -13,7 +13,6 @@ export default function BodyComponent({
   return (
     <div className="">
       {path !== "/checkout" && <Navbar />}
-
       {children}
       {path !== "/checkout" && <Footer />}
     </div>

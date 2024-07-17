@@ -26,6 +26,7 @@ type ShopProps = {
   getTotalItemsInCart?: any;
   loading?: boolean;
   products?: ProductItem[];
+  getProduct?: (id: string) => void;
 };
 
 type Props = {
@@ -35,6 +36,7 @@ type Props = {
 export const ShopContextProvider = ({ children }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<ProductItem[]>([]);
+  const [product, setProduct] = useState<Product>();
   // PAGINATION
   const [currentPage, setCurrentPage] = useState(1);
   const [sliceValue, setSliceValue] = useState(1);
@@ -87,7 +89,6 @@ export const ShopContextProvider = ({ children }: Props) => {
     //   }
     // }, [] as CartProps[])
     setCartItems((prev: any) => {
-
       return prev
         .map((cartItem: CartProps) =>
           cartItem.id === id
@@ -107,7 +108,6 @@ export const ShopContextProvider = ({ children }: Props) => {
 
   async function getProducts() {
     setLoading(true);
-    // try {
     await fetch(
       `https://api.timbu.cloud/products?organization_id=${process.env.NEXT_PUBLIC_Organization_ID}&Appid=${process.env.NEXT_PUBLIC_App_ID}&Apikey=${process.env.NEXT_PUBLIC_ApiKey}`
     )
@@ -116,11 +116,24 @@ export const ShopContextProvider = ({ children }: Props) => {
         setProducts(data.items);
         setLoading(false);
         console.log(data.items);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
       });
-    // } catch (err) {
-    // console.log(err);
-    // setLoading(false);
-    // }
+  }
+  async function getProduct(id: string) {
+    await fetch(
+      `https://api.timbu.cloud/products/${id}?organization_id=${process.env.NEXT_PUBLIC_Organization_ID}&Appid=${process.env.NEXT_PUBLIC_App_ID}&Apikey=${process.env.NEXT_PUBLIC_ApiKey}`
+    )
+      .then((response) => response.json())
+      .then((data: Product) => {
+        setProduct(data);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   useEffect(() => {
@@ -140,6 +153,7 @@ export const ShopContextProvider = ({ children }: Props) => {
     getTotalItemsInCart,
     loading,
     products,
+    getProduct,
   };
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;

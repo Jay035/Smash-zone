@@ -1,10 +1,9 @@
 "use client";
 
-import { Products } from "@/components/data";
 import { Product } from "./Product";
 import { Pagination } from "./Pagination";
 import { useShopContext } from "@/context/ContextProvider";
-import { useEffect } from "react";
+import { Loader } from "./Loader";
 
 type Props = {
   itemsPerPage: number;
@@ -40,7 +39,7 @@ export function ProductListing({ itemsPerPage }: Props) {
           )}
         </div>
       ) : (
-        <p className="text-center">Loading</p>
+        <Loader />
       )}
     </section>
   );

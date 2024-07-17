@@ -1,10 +1,3 @@
-type ProductProps = {
-  id: number;
-  name: string;
-  price: number;
-  category: string;
-};
-
 type CartProps = {
   quantity: number;
   name: string;
@@ -60,9 +53,11 @@ type CartProps = {
 
 interface ModalProps {
   modalHeader?: string;
-  children: ReactElement;
+  children?: ReactElement;
   showModal?: boolean;
   setShowModal?: (x: boolean) => void;
+  handleClick?: (x: any) => void;
+  item?: ProductItem;
 }
 
 interface Product {
@@ -95,7 +90,6 @@ interface Product {
   user_id: string;
 }
 
-
 interface Photo {
   file_rename: boolean;
   filename: string;
@@ -109,10 +103,10 @@ interface Photo {
   url: string;
 }
 
-interface ProductData {
-  debug: any | null;
-  items: Product[];
-}
+// interface ProductData {
+//   debug: any | null;
+//   items: Product[];
+// }
 
 interface ProductItem {
   name: string;

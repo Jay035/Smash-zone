@@ -28,10 +28,7 @@ export default function RootLayout({
         className={`${playfairDisplay.className} ${exo_2.variable} scroll-smooth overflow-x-hidden`}
       >
         <ShopContextProvider>
-          <BodyComponent>
-            
-            {children}
-          </BodyComponent>
+          <BodyComponent>{children}</BodyComponent>
         </ShopContextProvider>
       </body>
     </html>
