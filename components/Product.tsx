@@ -67,7 +67,7 @@ export function Product({ item }: Props) {
         className="w-[74px] h-[200px] md:w-[136px] md:h-[368px]"
       />
       <h2
-        className="mt-8 mb-4"
+        className="mt-8 mb-4 cursor-pointer"
         id="product_name"
         onClick={(e: any) => {
           e.preventDefault();
