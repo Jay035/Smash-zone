@@ -42,10 +42,26 @@ export const ShopContextProvider = ({ children }: Props) => {
   const [sliceValue, setSliceValue] = useState(1);
 
   // CART
-  const [cartItems, setCartItems] = useLocalStorage<CartProps[]>(
-    "shopping-cart",
+  const [cartItems, setCartItems] = useState<CartProps[]>(
     []
   );
+  // const [cartItems, setCartItems] = useLocalStorage<CartProps[]>(
+  //   "shopping-cart",
+  //   []
+  // );
+
+     // Load cart items from localStorage when the component mounts
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
+  // Save cart items to localStorage whenever the cart state changes
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const getTotalItemsInCart = (items: CartProps[]) =>
     items?.reduce((acc, item) => acc + item.quantity, 0);
