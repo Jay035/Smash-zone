@@ -82,7 +82,6 @@ export const ShopContextProvider = ({ children }: Props) => {
         return [...prev, { ...product, quantity: 1 }];
       }
     });
-    console.log(cartItems);
   };
 
   const updateCartItem = (id: string, quantity: number) => {
@@ -91,7 +90,7 @@ export const ShopContextProvider = ({ children }: Props) => {
         item.id === id ? { ...item, quantity } : console.log("item not found")
       )
     );
-    console.log(cartItems, quantity);
+    // console.log(cartItems, quantity);
   };
 
   const decreaseItemQuantity = ({ id }: CartProps) => {
@@ -115,7 +114,7 @@ export const ShopContextProvider = ({ children }: Props) => {
   };
 
   const removeFromCart = (id: string) => {
-    console.log("remove from cart", id);
+    // console.log("remove from cart", id);
     setCartItems((prev) => {
       return prev.filter((item: CartProps) => item.id !== id);
     });
@@ -130,7 +129,7 @@ export const ShopContextProvider = ({ children }: Props) => {
       .then((data: ProductResponse) => {
         setProducts(data.items);
         setLoading(false);
-        console.log(data.items);
+        // console.log(data.items);
       })
       .catch((err) => {
         console.log(err);
