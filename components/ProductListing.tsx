@@ -4,17 +4,18 @@ import { Product } from "./Product";
 import { Pagination } from "./Pagination";
 import { useShopContext } from "@/context/ContextProvider";
 import { Loader } from "./Loader";
+import { Products } from "./data";
 
 type Props = {
   itemsPerPage: number;
 };
 
 export function ProductListing({ itemsPerPage }: Props) {
-  const { currentPage, products, loading } = useShopContext();
+  const { currentPage, loading } = useShopContext();
 
   // PAGINATION
 
-  const paginatedItems = products?.slice(
+  const paginatedItems = Products?.slice(
     (currentPage! - 1) * itemsPerPage!,
     currentPage! * itemsPerPage!
   );

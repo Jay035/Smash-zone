@@ -13,8 +13,7 @@ export function Product({ item }: Props) {
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showToast, setShowToast] = useState<boolean>(false);
-  const formattedPrice = item?.current_price[0].NGN[0];
-  // .toLocaleString();
+  const formattedPrice = item?.price;
   const [addToCartSuccessful, setAddToCartSuccessful] =
     useState<boolean>(false);
 
@@ -35,7 +34,12 @@ export function Product({ item }: Props) {
     >
       {/* MODAL  */}
       {showModal && (
-        <Modal handleClick={handleClick} item={item} showModal={showModal} setShowModal={setShowModal}/>
+        <Modal
+          handleClick={handleClick}
+          item={item}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
       )}
 
       <Toast showModal={showToast} setShowModal={setShowToast}>
@@ -56,11 +60,12 @@ export function Product({ item }: Props) {
       </Toast>
 
       <Image
-        src={
-          item.photos[0] !== undefined
-            ? `https://api.timbu.cloud/images/${item?.photos[0]?.url}`
-            : ``
-        }
+        src={item?.image}
+        // src={
+        //   item.photos[0] !== undefined
+        //     ? `https://api.timbu.cloud/images/${item?.photos[0]?.url}`
+        //     : ``
+        // }
         alt="product image"
         width="0"
         height="0"

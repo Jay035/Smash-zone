@@ -31,7 +31,6 @@ export  function Pagination({itemsPerPage}: Props) {
           // work on this func
           onClick={() => {
             handlePageClick(i);
-            console.log(i, currentPage);
           }}
           className={` flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 ${
             i === currentPage
@@ -64,22 +63,11 @@ export  function Pagination({itemsPerPage}: Props) {
         />
       </button>
       <div className="flex gap-4 text-lg items-center">
-        {/* {Array.from({ length: totalPages }, (_, index) => (
-          <button
-          className=" bg-[#EDEDED] flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 hover:bg-[#EDEDED]/70 "
-        
-            key={index + 1}
-            onClick={() => handlePageClick(index + 1)}
-            disabled={currentPage === index + 1}
-          >
-            {index + 1}
-          </button>
-        ))} */}
         {renderPageNumbers()}
       </div>
       <button
         disabled={currentPage === totalPages}
-        className=" bg-[#EDEDED] flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 hover:bg-[#EDEDED]/70 "
+        className=" bg-[#EDEDED] flex items-center justify-center w-[38px] h-[38px] rounded-full disabled:opacity-80 disabled:hover:opacity-100 disabled:hover:bg-[#EDEDED] hover:bg-[#504d4d]/70"
         onClick={() => handlePageClick(currentPage! + 1)}
       >
         <Image

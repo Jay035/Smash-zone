@@ -26,7 +26,8 @@ type ShopProps = {
   getTotalItemsInCart?: any;
   loading?: boolean;
   products?: ProductItem[];
-  getProduct?: (id: string) => void;
+  getProduct?: (data: ProductItem) => void;
+  // getProduct?: (id: string) => void;
 };
 
 type Props = {
@@ -36,23 +37,21 @@ type Props = {
 export const ShopContextProvider = ({ children }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<ProductItem[]>([]);
-  const [product, setProduct] = useState<Product>();
+  const [product, setProduct] = useState<ProductItem>();
   // PAGINATION
   const [currentPage, setCurrentPage] = useState(1);
   const [sliceValue, setSliceValue] = useState(1);
 
   // CART
-  const [cartItems, setCartItems] = useState<CartProps[]>(
-    []
-  );
+  const [cartItems, setCartItems] = useState<CartProps[]>([]);
   // const [cartItems, setCartItems] = useLocalStorage<CartProps[]>(
   //   "shopping-cart",
   //   []
   // );
 
-     // Load cart items from localStorage when the component mounts
+  // Load cart items from localStorage when the component mounts
   useEffect(() => {
-    const storedCartItems = localStorage.getItem('cartItems');
+    const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
@@ -60,7 +59,7 @@ export const ShopContextProvider = ({ children }: Props) => {
 
   // Save cart items to localStorage whenever the cart state changes
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
   const getTotalItemsInCart = (items: CartProps[]) =>
@@ -138,19 +137,27 @@ export const ShopContextProvider = ({ children }: Props) => {
         setLoading(false);
       });
   }
-  async function getProduct(id: string) {
-    await fetch(
-      `https://api.timbu.cloud/products/${id}?organization_id=${process.env.NEXT_PUBLIC_Organization_ID}&Appid=${process.env.NEXT_PUBLIC_App_ID}&Apikey=${process.env.NEXT_PUBLIC_ApiKey}`
-    )
-      .then((response) => response.json())
-      .then((data: Product) => {
-        setProduct(data);
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+  // get product from data file
+  function getProduct(data: ProductItem) {
+    setProduct(data);
   }
+
+  // get product from API
+
+  // async function getProduct(id: string) {
+  //   await fetch(
+  //     `https://api.timbu.cloud/products/${id}?organization_id=${process.env.NEXT_PUBLIC_Organization_ID}&Appid=${process.env.NEXT_PUBLIC_App_ID}&Apikey=${process.env.NEXT_PUBLIC_ApiKey}`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data: Product) => {
+  //       setProduct(data);
+  //       console.log(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
   useEffect(() => {
     getProducts();
@@ -169,6 +176,7 @@ export const ShopContextProvider = ({ children }: Props) => {
     getTotalItemsInCart,
     loading,
     products,
+    product,
     getProduct,
   };
 

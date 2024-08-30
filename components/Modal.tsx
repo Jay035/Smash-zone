@@ -11,7 +11,7 @@ export default function Modal({
   showModal,
   setShowModal,
   item,
-  handleClick
+  handleClick,
 }: ModalProps) {
   return (
     <div className="fixed z-[99999999999999999] top-0 left-0 bg-[#eeee]/50 backdrop-blur-sm w-full h-screen flex justify-center items-center">
@@ -31,32 +31,33 @@ export default function Modal({
           </svg>
         </button>
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <Image
-              src={
-                item?.photos[0] !== undefined
-                  ? `https://api.timbu.cloud/images/${item?.photos[0]?.url}`
-                  : ``
-              }
-              alt="product image"
-              width="0"
-              height="0"
-              className="w-[74px] h-[200px] md:w-[136px] md:h-[368px]"
-            />
-            <div className="">
-              <h2 className="mt-8 mb-4 text-2xl font-medium" id="product_name">
-                {item?.name}
-              </h2>
-              <p id="price" className="font-exo-2">
-                &#8358;{item?.current_price[0].NGN[0]}.00
-              </p>
-              <button
-                className="bg-[#212121] py-2 px-4 mt-6 text-white hover:bg-white hover:text-[#212121] hover:border hover:border-[#212121]"
-                onClick={handleClick}
-              >
-                ADD TO CART
-              </button>
-            </div>
+          <Image
+            src={item?.image!}
+            // src={
+            //   item?.image !== undefined
+            //     ? `https://api.timbu.cloud/images/${item?.photos[0]?.url}`
+            //     : ``
+            // }
+            alt="product image"
+            width="0"
+            height="0"
+            className="w-[74px] h-[200px] md:w-[136px] md:h-[368px]"
+          />
+          <div className="">
+            <h2 className="mt-8 mb-4 text-2xl font-medium" id="product_name">
+              {item?.name}
+            </h2>
+            <p id="price" className="font-exo-2">
+              &#8358;{item?.price}.00
+            </p>
+            <button
+              className="bg-[#212121] py-2 px-4 mt-6 text-white hover:bg-white hover:text-[#212121] hover:border hover:border-[#212121]"
+              onClick={handleClick}
+            >
+              ADD TO CART
+            </button>
           </div>
+        </div>
       </div>
     </div>
   );

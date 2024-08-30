@@ -1,27 +1,29 @@
 type CartProps = {
   quantity: number;
   name: string;
-  description: string;
-  unique_id: string;
-  url_slug: string;
-  is_available: boolean;
-  is_service: boolean;
-  previous_url_slugs: string | null;
-  unavailable: boolean;
-  unavailable_start: string | null;
-  unavailable_end: string | null;
-  id: string;
-  parent_product_id: string | null;
-  parent: string | null;
-  organization_id: string;
-  stock_id: string | null;
-  product_image: any[];
-  categories: any[];
-  date_created: string;
-  last_updated: string;
-  user_id: string;
-  photos: any[];
-  photos: [
+  image: string;
+  price: number
+  description?: string;
+  unique_id?: string;
+  url_slug?: string;
+  is_available?: boolean;
+  is_service?: boolean;
+  previous_url_slugs?: string | null;
+  unavailable?: boolean;
+  unavailable_start?: string | null;
+  unavailable_end?: string | null;
+  id: string | number;
+  parent_product_id?: string | null;
+  parent?: string | null;
+  organization_id?: string;
+  stock_id?: string | null;
+  product_image?: any[];
+  categories?: any[];
+  date_created?: string;
+  last_updated?: string;
+  user_id?: string;
+  photos?: any[];
+  photos?: [
     {
       model_name: string;
       model_id: string;
@@ -35,20 +37,21 @@ type CartProps = {
       position: number;
     }
   ];
-  current_price: [
-    {
-      NGN: [boolean, null, []];
-    }
-  ];
-  stocks: any | null;
-  is_deleted: boolean;
-  available_quantity: number | null;
-  selling_price: number | null;
-  discounted_price: number | null;
-  buying_price: number | null;
-  extra_infos: any | null;
-  featured_reviews: any | null;
-  unavailability: any[];
+  // current_price: 
+  //   [{
+  //     NGN: number;
+  //   }]
+  // ;
+  stocks?: any | null;
+  is_deleted?: boolean;
+  available_quantity?: number | null;
+  selling_price?: number | null;
+  discounted_price?: number | null;
+  buying_price?: number | null;
+  extra_infos?: any | null;
+  featured_reviews?: any | null;
+  unavailability?: any[];
+
 };
 
 interface ModalProps {
@@ -110,27 +113,29 @@ interface Photo {
 
 interface ProductItem {
   name: string;
-  description: string;
-  unique_id: string;
-  url_slug: string;
-  is_available: boolean;
-  is_service: boolean;
-  previous_url_slugs: string | null;
-  unavailable: boolean;
-  unavailable_start: string | null;
-  unavailable_end: string | null;
-  id: string;
-  parent_product_id: string | null;
-  parent: string | null;
-  organization_id: string;
-  stock_id: string | null;
-  product_image: any[];
-  categories: any[];
-  date_created: string;
-  last_updated: string;
-  user_id: string;
-  photos: any[];
-  photos: [
+  image: string;
+  price: number
+  description?: string;
+  unique_id?: string;
+  url_slug?: string;
+  is_available?: boolean;
+  is_service?: boolean;
+  previous_url_slugs?: string | null;
+  unavailable?: boolean;
+  unavailable_start?: string | null;
+  unavailable_end?: string | null;
+  id: string | number;
+  parent_product_id?: string | null;
+  parent?: string | null;
+  organization_id?: string;
+  stock_id?: string | null;
+  product_image?: any[];
+  categories?: any[];
+  date_created?: string;
+  last_updated?: string;
+  user_id?: string;
+  photos?: any[];
+  photos?: [
     {
       model_name: string;
       model_id: string;
@@ -144,20 +149,20 @@ interface ProductItem {
       position: number;
     }
   ];
-  current_price: [
-    {
-      NGN: [boolean, null, []];
-    }
-  ];
-  stocks: any | null;
-  is_deleted: boolean;
-  available_quantity: number | null;
-  selling_price: number | null;
-  discounted_price: number | null;
-  buying_price: number | null;
-  extra_infos: any | null;
-  featured_reviews: any | null;
-  unavailability: any[];
+  // current_price: 
+  //   [{
+  //     NGN: number;
+  //   }]
+  // ;
+  stocks?: any | null;
+  is_deleted?: boolean;
+  available_quantity?: number | null;
+  selling_price?: number | null;
+  discounted_price?: number | null;
+  buying_price?: number | null;
+  extra_infos?: any | null;
+  featured_reviews?: any | null;
+  unavailability?: any[];
 }
 
 interface ProductResponse {

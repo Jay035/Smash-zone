@@ -18,7 +18,7 @@ export default function CartItems({}: Props) {
 
   const calculateTotal = () =>
     cartItems.reduce(
-      (ack: number, item: CartProps) => ack + item.quantity * Number(item?.current_price[0].NGN[0]),
+      (ack: number, item: CartProps) => ack + item.quantity * Number(item?.price),
       0
     );
 
@@ -42,9 +42,7 @@ export default function CartItems({}: Props) {
               <div className="flex items-center gap-4 justify-between">
                 <Image
                   src={
-                    item.photos[0] !== undefined
-                      ? `https://api.timbu.cloud/images/${item?.photos[0]?.url}`
-                      : ``
+                    item.image
                   }
                   alt="product image"
                   width="0"
@@ -56,7 +54,7 @@ export default function CartItems({}: Props) {
                     {item?.name}
                   </h2>
                   <p className="font-exo-2 text-lg font-bold text-[#3B3B3B]">
-                    {item?.current_price[0].NGN[0]}
+                    {item?.price}
                   </p>
                 </div>
               </div>
@@ -108,7 +106,7 @@ export default function CartItems({}: Props) {
               </div>
               <p className="hidden w-fit md:inline-block text-lg font-exo-2 font-bold text-[#3B3B3B]">
                 &#8358;
-                {(item.quantity * Number(item?.current_price[0].NGN[0])).toFixed(
+                {(item.quantity * Number(item?.price)).toFixed(
                   2
                 )}
               </p>
